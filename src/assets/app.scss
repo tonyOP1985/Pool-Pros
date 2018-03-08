@@ -1,0 +1,84 @@
+$dark-blue: rgb(11, 59, 170);
+$blue: rgb(25, 82, 213);
+$light-blue: rgb(63, 111, 221);
+$color-white: rgb(255, 255, 255);
+$off-white: rgb(232, 232, 232);
+$light-gray: #9fa6a7;
+$lighter-gray: #d7e0e1;
+$text-primary: Arial, Helvetica, sans-serif;
+$text-secondary: 'Roboto', sans-serif;
+
+// small tablets and large smartphones (landscape view)
+// $screen-sm-min: 576px;
+$screen-sm-min: 587px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large-xl-min
+$screen-xl-min: 1200px;
+
+//mixins
+@mixin container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+@mixin center-vertical {
+  display: flex;
+  align-items: center;
+}
+
+@mixin space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin space-around {
+  display: flex;
+  justify-content: space-around;
+}
+
+@mixin horizontal-list {
+  list-style: none;
+  display: inline-block;
+}
+
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+@mixin custom($screen) {
+  @media (min-width: $screen + 'px') {
+    @content;
+  }
+}
+
+// footer__bottom_links
+// @mixin footer_bottom {
+//   padding: 0 1.2rem 0 1rem;
+//   font-size: 1.5rem;
+// }
