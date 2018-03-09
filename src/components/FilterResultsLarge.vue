@@ -1,14 +1,11 @@
 <template>
-  <div class="filter-results" v-show="windowWidth < 768">
+  <div class="filter-results" v-show="windowWidth >= 768">
     <div class="container">
       <div class="filter-results__filter">
         <h1 class="dealer-amount">{{ dealers }} dealers</h1>
-        <button @click="show = !show">
-          <h1>Filter Results</h1>
-          <span>&#9662;</span>
-        </button>
+        <h1 class="filter-results__title">Filter Results</h1>
       </div>
-      <div class="filter-results__options" v-bind:class="{ show: show }">
+      <div class="filter-results__options">
         <div class="option">
           <input type="checkbox" name="service" id="service">
           <span></span>
@@ -36,11 +33,10 @@
 
 <script>
 export default {
-  name: 'filterResults',
+  name: 'filterResultsLarge',
   props: ['windowWidth'],
   data () {
     return {
-      show: false,
       dealers: 0
     }
   }
@@ -49,77 +45,47 @@ export default {
 
 <style lang="scss" scoped>
   @import "../assets/app.scss";
-
   .filter-results {
     width: 100%;
-    height: 30rem;
-    // height: 8rem;
+    height: 7rem;
     font-family: $text-primary;
-    z-index: 0;
     background-color: #eaecec;
+    border-radius: .6rem;
+    margin: 0 auto;
   }
 
   .container {
     @include container;
+    width: 90%;
+    height: 7rem;
+    @include center-vertical;
   }
 
   .filter-results__filter {
-    width: 27.3rem;
-    height: 6rem;
-    margin: 0 auto;
-    @include space-between;
+    @include center-vertical;
 
     .dealer-amount {
       width: 8rem;
       height: 2rem;
-      margin-top: 2.7rem;
       color: $blue;
       font-size: 1.8rem;
       text-align: center;
     }
 
-     button {
-      width: 16.4rem;
-      height: 4rem;
-      margin-top: 1.8rem;
-      display: block;
-      border: .1rem solid $lighter-gray;
-      font-size: 1.5rem;
-      font-family: $text-primary;
-      font-weight: 700;
-      cursor: pointer;
-      background-color: $color-white;
-
-      h1 {
-        font-size: 1.5rem;
-        width: 12rem;
-        margin-top: 1.1rem;
-        float: left;
-      }
-
-      span {
-        float: right;
-        display: block;
-        width: 4rem;
-        height: 3rem;
-        border-left: .1rem solid $lighter-gray;
-        padding-top: 1rem;
-        // background-color: $off-white;
-        background-color: #eaecec;
-        text-align: center;
-      }
+    .filter-results__title {
+      width: 10rem;
+      height: 2rem;
+      margin-top: .6rem;
+      font-size: 1.4rem;
+      text-align: center;
     }
   }
 
-  // check boxes
   .filter-results__options {
-    // display: block;
-    display: none;
-    width: 27.3rem;
-    height: 20rem;
-    // height: 0;
-    margin: 0 auto;
-    background-color: $color-white;
+    @include center-vertical;
+    display: block;
+    // width: 27.3rem;
+    height: 7rem;
   }
 
   .show {
@@ -130,10 +96,13 @@ export default {
   .option {
     @include center-vertical;
     position: relative;
-    height: 5rem;
-    padding-left: 1.5rem;
+    display: inline-block;
+    height: 7rem;
+    width: 13rem;
+    // padding-left: 1.5rem;
+    padding-top: 2.3rem;
     span {
-      display: block;
+      display: inline-block;
       position: relative;
       border: .05rem solid $lighter-gray;
       border-radius: .4rem;
@@ -157,7 +126,7 @@ export default {
       position: absolute;
       opacity: 0;
       cursor: pointer;
-      width: 90%;
+      width: 80%;
       height: 2.5rem;
       z-index: 1;
 
@@ -193,10 +162,12 @@ export default {
     }
 
     label {
-      display: block;
-      width: 12rem;
+      position: absolute;
+      display: inline-block;
+      width: 8rem;
       font-size: 1.2rem;
       padding-left: 1rem;
+      margin-top: .6rem;
     }
   }
 </style>

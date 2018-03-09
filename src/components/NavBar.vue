@@ -62,9 +62,10 @@ export default {
   components: {
     NavBarMobileDropDown
   },
+  props: ['windowWidth'],
   data () {
     return {
-      windowWidth: 0,
+      // windowWidth: 0,
       isOpen: false,
       menuLinks: [
         {
@@ -115,23 +116,10 @@ export default {
       ]
     }
   },
-  mounted () {
-    this.$nextTick(() => {
-      window.addEventListener('resize', this.getWindowWidth)
-
-      this.getWindowWidth()
-    })
-  },
   methods: {
-    getWindowWidth () {
-      this.windowWidth = document.documentElement.clientWidth
-    },
     openSideNav () {
       this.isOpen = !this.isOpen
     }
-  },
-  beforeDestroy () {
-    window.addEventListener('resize', this.getWindowWidth)
   }
 }
 </script>

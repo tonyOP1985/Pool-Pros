@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <TopHeader></TopHeader>
-    <NavBar></NavBar>
+    <NavBar v-bind:windowWidth="windowWidth"></NavBar>
     <Jumbotron></Jumbotron>
     <Directions></Directions>
-    <!-- <filter-results></filter-results> -->
-    <FilterResults></FilterResults>
+    <FilterResults v-bind:windowWidth="windowWidth"></FilterResults>
+    <FilterResultsLarge v-bind:windowWidth="windowWidth"></FilterResultsLarge>
     <SiteFooter></SiteFooter>
   </div>
 </template>
@@ -17,6 +17,7 @@ import Jumbotron from './components/Jumbotron.vue'
 import Directions from './components/Directions.vue'
 import SiteFooter from './components/SiteFooter.vue'
 import FilterResults from './components/FilterResults.vue'
+import FilterResultsLarge from './components/FilterResultsLarge.vue'
 
 export default {
   name: 'App',
@@ -26,7 +27,31 @@ export default {
     Directions,
     TopHeader,
     SiteFooter,
-    FilterResults
+    FilterResults,
+    FilterResultsLarge
+  },
+  data () {
+    return {
+      windowWidth: 0
+    }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.getWindowWidth)
+
+      this.getWindowWidth()
+    })
+  },
+  methods: {
+    getWindowWidth () {
+      this.windowWidth = document.documentElement.clientWidth
+    },
+    openSideNav () {
+      this.isOpen = !this.isOpen
+    }
+  },
+  beforeDestroy () {
+    window.addEventListener('resize', this.getWindowWidth)
   }
 }
 </script>
