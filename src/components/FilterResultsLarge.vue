@@ -1,5 +1,5 @@
 <template>
-  <div class="filter-results" v-show="windowWidth >= 768">
+  <div class="filter-results">
     <div class="container">
       <div class="filter-results__filter">
         <h1 class="dealer-amount">{{ dealers }} dealers</h1>
@@ -34,7 +34,6 @@
 <script>
 export default {
   name: 'filterResultsLarge',
-  props: ['windowWidth'],
   data () {
     return {
       dealers: 0
@@ -52,30 +51,38 @@ export default {
     background-color: #eaecec;
     border-radius: .6rem;
     margin: 0 auto;
+
+    @include lg {
+      width: 99.2rem;
+    }
   }
 
   .container {
     @include container;
-    width: 90%;
+    width: 76.8rem;
     height: 7rem;
     @include center-vertical;
+    @include space-around;
   }
 
   .filter-results__filter {
     @include center-vertical;
 
     .dealer-amount {
-      width: 8rem;
-      height: 2rem;
+      width: 10rem;
+      height: 4rem;
       color: $blue;
       font-size: 1.8rem;
       text-align: center;
+      border-right: .1rem solid $lighter-gray;
+      @include center-vertical;
     }
 
     .filter-results__title {
       width: 10rem;
       height: 2rem;
       margin-top: .6rem;
+      padding-left: 2rem;
       font-size: 1.4rem;
       text-align: center;
     }
@@ -97,9 +104,8 @@ export default {
     @include center-vertical;
     position: relative;
     display: inline-block;
-    height: 7rem;
+    height: 4rem;
     width: 13rem;
-    // padding-left: 1.5rem;
     padding-top: 2.3rem;
     span {
       display: inline-block;
@@ -118,7 +124,8 @@ export default {
         height: 2.4rem;
         top: 0;
         left: 0;
-        background-color: #eaecec;
+        // background-color: #eaecec;
+        background-color: white;
       }
     }
 
@@ -156,7 +163,7 @@ export default {
           left: 0;
           border-radius: .2rem;
           transition: .2s ease-in-out;
-          background-color: $lighter-gray;
+          background-color: $color-white;
         }
       }
     }

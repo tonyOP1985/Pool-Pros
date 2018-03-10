@@ -1,5 +1,5 @@
 <template>
-  <div class="filter-results" v-show="windowWidth < 768">
+  <div class="filter-results">
     <div class="container">
       <div class="filter-results__filter">
         <h1 class="dealer-amount">{{ dealers }} dealers</h1>
@@ -37,7 +37,6 @@
 <script>
 export default {
   name: 'filterResults',
-  props: ['windowWidth'],
   data () {
     return {
       show: false,

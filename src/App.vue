@@ -4,8 +4,12 @@
     <NavBar v-bind:windowWidth="windowWidth"></NavBar>
     <Jumbotron></Jumbotron>
     <Directions></Directions>
-    <FilterResults v-bind:windowWidth="windowWidth"></FilterResults>
-    <FilterResultsLarge v-bind:windowWidth="windowWidth"></FilterResultsLarge>
+    <div class="filter-mobile" v-show="windowWidth < 768">
+      <FilterResults></FilterResults>
+    </div>
+    <div class="filter-large" v-show="windowWidth >= 768">
+      <FilterResultsLarge></FilterResultsLarge>
+    </div>
     <SiteFooter></SiteFooter>
   </div>
 </template>
@@ -60,5 +64,10 @@ export default {
   @import "assets/app.scss";
   #app {
     width: 100%;
+    overflow: hidden;
+  }
+
+  .filter-large {
+    height: 12rem;
   }
 </style>

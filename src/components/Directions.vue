@@ -65,13 +65,14 @@ export default {
       @include space-around;
     }
     @include lg {
-      width: 76.2rem;
+      // width: 76.2rem;
+      width: 99.2rem;
       margin: 0 auto;
     }
-    @include xl {
-      width: 70%;
-      margin: 0 auto;
-    }
+    // @include xl {
+    //   width: 70%;
+    //   margin: 0 auto;
+    // }
   }
 
   .container {
