@@ -43,6 +43,7 @@ export default {
 
 <style lang="scss" scoped>
   @import "../assets/app.scss";
+
   .directions {
     font-family: $text-secondary;
   }

@@ -10,6 +10,7 @@
     <div class="filter-large" v-show="windowWidth >= 768">
       <FilterResultsLarge></FilterResultsLarge>
     </div>
+    <Dealers></Dealers>
     <SiteFooter></SiteFooter>
   </div>
 </template>
@@ -22,6 +23,7 @@ import Directions from './components/Directions.vue'
 import SiteFooter from './components/SiteFooter.vue'
 import FilterResults from './components/FilterResults.vue'
 import FilterResultsLarge from './components/FilterResultsLarge.vue'
+import Dealers from './components/Dealers.vue'
 
 export default {
   name: 'App',
@@ -32,7 +34,8 @@ export default {
     TopHeader,
     SiteFooter,
     FilterResults,
-    FilterResultsLarge
+    FilterResultsLarge,
+    Dealers
   },
   data () {
     return {

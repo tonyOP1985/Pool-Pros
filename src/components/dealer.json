@@ -1,0 +1,60 @@
+{
+    "dealers": [
+        {
+            "data": {
+                "companyID": 401929,
+                "name": "Aqua Experts",
+                "phone1": "1-888-234-5678",
+                "email": "info@aquaexperts.com",
+                "addressLine1": "1234 Some Street",
+                "addressLine2": "",
+                "city": "Charlotte",
+                "state": "North Carolina",
+                "country": "US",
+                "zipcode": "28205",
+                "weekHours": {
+                    "mon": "7:00am - 7:00pm",
+                    "tue": "7:00am - 7:00pm",
+                    "wed": "7:00am - 7:00pm",
+                    "thu": "7:00am - 7:00pm",
+                    "fri": "7:00am - 7:00pm",
+                    "sat": "7:00am - 3:00pm",
+                    "sun": ""
+                },
+                "certifications": [
+                    "Installation Pro",
+                    "Residential Pro",
+                    "Service Pro"
+                ]
+            }
+        }, {
+            "data": {
+                "companyID": 401928,
+                "name": "Premium Pools & Spas of Charlotte",
+                "phone1": "1-888-888-8888",
+                "email": "info@premiumpoolscharlotte.com",
+                "addressLine1": "1234 Some Street",
+                "addressLine2": "",
+                "city": "Charlotte",
+                "state": "North Carolina",
+                "country": "US",
+                "zipcode": "28205",
+                "weekHours": {
+                    "mon": "7:00am - 7:00pm",
+                    "tue": "7:00am - 7:00pm",
+                    "wed": "7:00am - 7:00pm",
+                    "thu": "7:00am - 7:00pm",
+                    "fri": "7:00am - 7:00pm",
+                    "sat": "",
+                    "sun": "On Call"
+                },
+                "certifications": [
+                    "Installation Pro",
+                    "Commercial Pro",
+                    "Residential Pro",
+                    "Service Pro"
+                ]
+            }
+        }
+    ]
+}
