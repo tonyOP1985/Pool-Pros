@@ -3,7 +3,7 @@
     <div
       class="dealer-info"
       v-for="(dealer, index) in dealerList"
-      v-bind:key="index">
+      :key="index">
 
       <h1>{{ dealer.data.name }}</h1>
       <button
@@ -17,20 +17,32 @@
         </span>
       </button>
 
-      <p>Can't talk? Click below to send and email.</p>
+      <p>Can't talk? Click below to send an email.</p>
       <button
         class="dealer-info__email">
         <img src="/static/img/email-icon.png" alt="email">
         <span class="contact">Contact this Pro</span>
       </button>
 
-      <div class="dealer-info__hours"></div>
+      <div class="dealer-info__hours">
+        <h1>Business Hours</h1>
+        <ul>
+          <!-- <li v-for="(hours, index) in dealer.data.weekHours" :key="index">
+            {{ hours }}
+          </li> -->
+          <li>Weekdays {{ proClosed(dealer.data.weekHours.mon) }}</li>
+          <li>Saturdays {{ proClosed(dealer.data.weekHours.sat) }}</li>
+          <li>Sundays {{ proClosed(dealer.data.weekHours.sun) }}</li>
+        </ul>
+      </div>
 
       <div class="dealer-info__certifactions">
-        <span v-for="(certification, index) in dealer.data.certifications" v-bind:key="index">
-          <img :src="addCertImage(certification)" :alt="certification">
-          {{ certification }}
-        </span>
+        <ul class="dealer-info__wrapper">
+          <li v-for="(certification, index) in dealer.data.certifications" :key="index">
+            <img :src="addCertImage(certification)" :alt="certification">
+            {{ certification }}
+          </li>
+        </ul>
       </div>
 
     </div>
@@ -50,7 +62,8 @@ export default {
         { name: 'Residential', image: 'home-residential-pro.png' },
         { name: 'Service', image: 'gear-service-pro.png' }
       ],
-      certImgURL: ''
+      weekHours: dealers.dealers[0].data.weekHours,
+      operationOpen: []
     }
   },
   methods: {
@@ -64,6 +77,15 @@ export default {
         if (this.certImage[i].name === newStr) {
           return `/static/img/${this.certImage[i].image}`
         }
+      }
+    },
+    proClosed (hours) {
+      if (hours === '') {
+        return '- Closed'
+      } else if (hours === 'On Call') {
+        return '- On Call'
+      } else {
+        return hours
       }
     }
   }
@@ -83,6 +105,7 @@ export default {
     margin: 0 auto;
     padding-top: 2rem;
     border: .1rem solid $off-white;
+    border-radius: .4rem;
 
     h1 {
       width: 100%;
@@ -176,6 +199,25 @@ export default {
       }
     }
 
+    .dealer-info__hours {
+      h1 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        padding-bottom: 0;
+      }
+
+      ul {
+        width: 100%;
+        font-family: $text-primary;
+        li {
+          width: 50%;
+          margin: .5rem auto 0  auto;
+          list-style: none;
+          text-align: center;
+        }
+      }
+    }
+
     .dealer-info__certifactions {
       width: 100%;
       height: 7rem;
@@ -183,9 +225,22 @@ export default {
       margin-top: 2rem;
       font-family: $text-primary;
 
-      span {
-        img {
-          height: 1rem;
+      .dealer-info__wrapper {
+        width: 80%;
+        height: 4rem;
+        margin: 0 auto;
+        padding-top: 2rem;
+
+          li {
+          display: inline-block;
+          position: relative;
+          width: 10rem;
+          height: 2rem;
+          padding-left: 2rem;
+          img {
+            display: inline-block;
+            height: 1rem;
+          }
         }
       }
     }
