@@ -1,16 +1,16 @@
 <template>
   <div id="app">
     <TopHeader></TopHeader>
-    <NavBar v-bind:windowWidth="windowWidth"></NavBar>
+    <NavBar :windowWidth="windowWidth" @getProDealers="sendDealers"></NavBar>
     <Jumbotron></Jumbotron>
-    <Directions></Directions>
+    <Directions :dealers="dealers"></Directions>
     <div class="filter-mobile" v-show="windowWidth < 768">
       <FilterResults></FilterResults>
     </div>
     <div class="filter-large" v-show="windowWidth >= 768">
       <FilterResultsLarge></FilterResultsLarge>
     </div>
-    <Dealers></Dealers>
+    <Dealers :dealers="dealers"></Dealers>
     <SiteFooter></SiteFooter>
   </div>
 </template>
@@ -39,7 +39,8 @@ export default {
   },
   data () {
     return {
-      windowWidth: 0
+      windowWidth: 0,
+      dealers: {}
     }
   },
   mounted () {
@@ -55,6 +56,10 @@ export default {
     },
     openSideNav () {
       this.isOpen = !this.isOpen
+    },
+    sendDealers (pros) {
+      this.dealers = pros
+      console.log(this.dealers)
     }
   },
   beforeDestroy () {

@@ -8,7 +8,7 @@
           </a>
         </div>
         <div class="navbar__btn">
-          <a href="#">
+          <a href="#" @click="getProDealers">
             <img src="/static/img/location-icon.png" alt="location" title="Find a Pool Pro">
             Find a Pro
           </a>
@@ -45,7 +45,7 @@
           </div>
           <div class="navbar__btn">
             <a href="#">
-              <img src="/static/img/location-icon.png" alt="location" title="Find a Pool Pro">
+              <img src="/static/img/location-icon.png" alt="location" title="Find a Pool Pro" @click="getProDealers">
               Find a Pool Pro
             </a>
           </div>
@@ -56,6 +56,7 @@
 
 <script>
 import NavBarMobileDropDown from './NavBarMobileDropDown.vue'
+import dealers from './dealer.json'
 
 export default {
   name: 'navBar',
@@ -67,6 +68,7 @@ export default {
     return {
       // windowWidth: 0,
       isOpen: false,
+      dealers: dealers.dealers,
       menuLinks: [
         {
           menuTitle: 'Pools & Spas',
@@ -119,6 +121,10 @@ export default {
   methods: {
     openSideNav () {
       this.isOpen = !this.isOpen
+    },
+    getProDealers (e) {
+      this.$emit('getProDealers', this.dealers)
+      e.preventDefault()
     }
   }
 }

@@ -1,68 +1,69 @@
 <template>
-  <div class="dealers">
-    <div
-      class="dealer-info"
-      v-for="(dealer, index) in dealerList"
-      :key="index">
+  <div class="dealers-wrapper">
+    <div class="dealers" v-if="!dealers"></div>
+    <div class="dealers" else>
+      <div
+        class="dealer-info"
+        v-for="(dealer, index) in dealers"
+        :key="index">
 
-      <h1>{{ dealer.data.name }}</h1>
-      <button
-        class="dealer-info__phone">
-        <img src="/static/img/phone-icon-mobile.png" alt="phone">
-        <span class="tap">
-          Tap to call
-        </span>
-        <span class="phone">
-          {{ removeDash(dealer.data.phone1) }}
-        </span>
-      </button>
+        <h1>{{ dealer.data.name }}</h1>
+        <button
+          class="dealer-info__phone">
+          <img src="/static/img/phone-icon-mobile.png" alt="phone">
+          <span class="tap">
+            Tap to call
+          </span>
+          <span class="phone">
+            {{ removeDash(dealer.data.phone1) }}
+          </span>
+        </button>
 
-      <p>Can't talk? Click below to send an email.</p>
-      <button
-        class="dealer-info__email">
-        <img src="/static/img/email-icon.png" alt="email">
-        <span class="contact">Contact this Pro</span>
-      </button>
+        <p>Can't talk? Click below to send an email.</p>
+        <button
+          class="dealer-info__email">
+          <img src="/static/img/email-icon.png" alt="email">
+          <span class="contact">Contact this Pro</span>
+        </button>
 
-      <div class="dealer-info__hours">
-        <h1>Business Hours</h1>
-        <ul>
-          <!-- <li v-for="(hours, index) in dealer.data.weekHours" :key="index">
-            {{ hours }}
-          </li> -->
-          <li>Weekdays {{ proClosed(dealer.data.weekHours.mon) }}</li>
-          <li>Saturdays {{ proClosed(dealer.data.weekHours.sat) }}</li>
-          <li>Sundays {{ proClosed(dealer.data.weekHours.sun) }}</li>
-        </ul>
+        <div class="dealer-info__hours">
+          <h1>Business Hours</h1>
+          <ul>
+            <li>Weekdays {{ proClosed(dealer.data.weekHours.mon) }}</li>
+            <li>Saturdays {{ proClosed(dealer.data.weekHours.sat) }}</li>
+            <li>Sundays {{ proClosed(dealer.data.weekHours.sun) }}</li>
+          </ul>
+        </div>
+
+        <div class="dealer-info__certifactions">
+          <ul class="dealer-info__wrapper">
+            <li v-for="(certification, index) in dealer.data.certifications" :key="index">
+              <img :src="addCertImage(certification)" :alt="certification">
+              {{ certification }}
+            </li>
+          </ul>
+        </div>
       </div>
-
-      <div class="dealer-info__certifactions">
-        <ul class="dealer-info__wrapper">
-          <li v-for="(certification, index) in dealer.data.certifications" :key="index">
-            <img :src="addCertImage(certification)" :alt="certification">
-            {{ certification }}
-          </li>
-        </ul>
-      </div>
-
     </div>
   </div>
 </template>
 
 <script>
-import dealers from './dealer.json'
+// import dealers from './dealer.json'
 export default {
   name: 'Dealers',
+  props: ['dealers'],
   data () {
     return {
-      dealerList: dealers.dealers,
+      // dealerList: dealers.dealers,
       certImage: [
         { name: 'Installation', image: 'star-installation-pro.png' },
         { name: 'Commercial', image: 'users-commercial-pro.png' },
         { name: 'Residential', image: 'home-residential-pro.png' },
         { name: 'Service', image: 'gear-service-pro.png' }
       ],
-      weekHours: dealers.dealers[0].data.weekHours,
+      // weekHours: this.dealers[0].data.weekHours,
+      // pros: [],
       operationOpen: []
     }
   },
@@ -87,6 +88,9 @@ export default {
       } else {
         return hours
       }
+    },
+    printDealers () {
+      console.log(this.dealers[0])
     }
   }
 }
