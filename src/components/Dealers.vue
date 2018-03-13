@@ -99,6 +99,12 @@ export default {
 <style lang="scss" scoped>
   @import "../assets/app.scss";
 
+  .dealers-wrapper {
+    @include md {
+      margin-top: 5rem;
+    }
+  }
+
   .dealers {
     width: 100%;
     background-color: $color-white;

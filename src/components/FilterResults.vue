@@ -1,12 +1,16 @@
 <template>
   <div class="filter-results">
     <div class="container">
-      <div class="filter-results__filter">
-        <h1 class="dealer-amount">{{ dealers }} dealers</h1>
+      <div class="filter-results__filter" v-show="windowWidth < 768">
+        <h1 class="dealer-amount">{{ dealers.length }} dealers</h1>
         <button @click="show = !show">
           <h1>Filter Results</h1>
           <span>&#9662;</span>
         </button>
+      </div>
+      <div class="filter-results__filter" v-show="windowWidth >= 768">
+        <h1 class="dealer-amount">{{ dealers.length }} dealers</h1>
+        <h1 class="filter-results__title">Filter Results</h1>
       </div>
       <div class="filter-results__options" v-bind:class="{ show: show }">
         <div class="option">
@@ -37,10 +41,10 @@
 <script>
 export default {
   name: 'filterResults',
+  props: ['dealers', 'windowWidth'],
   data () {
     return {
-      show: false,
-      dealers: 0
+      show: false
     }
   }
 }
@@ -56,10 +60,27 @@ export default {
     font-family: $text-primary;
     z-index: 0;
     background-color: #eaecec;
+
+    @include md {
+      height: 7rem;
+      border-radius: .6rem;
+      margin: 0 auto;
+    }
+
+    @include lg {
+      width: 99.2rem;
+    }
   }
 
   .container {
     @include container;
+
+    @include md {
+      width: 76.8rem;
+      height: 7rem;
+      @include center-vertical;
+      @include space-around;
+    }
   }
 
   .filter-results__filter {
@@ -68,12 +89,39 @@ export default {
     margin: 0 auto;
     @include space-between;
 
+    @include md {
+      @include center-vertical;
+      height: auto;
+      width: auto;
+      margin: 0;
+    }
+
     .dealer-amount {
       width: 8rem;
       height: 2rem;
       margin-top: 2.7rem;
       color: $blue;
       font-size: 1.8rem;
+      text-align: center;
+
+      @include md {
+        width: 10rem;
+        height: 4rem;
+        margin-top: 0;
+        color: $blue;
+        font-size: 1.8rem;
+        text-align: center;
+        border-right: .1rem solid $lighter-gray;
+        @include center-vertical;
+      }
+    }
+
+    .filter-results__title {
+      width: 10rem;
+      height: 2rem;
+      margin-top: .6rem;
+      padding-left: 2rem;
+      font-size: 1.4rem;
       text-align: center;
     }
 
@@ -119,6 +167,15 @@ export default {
     // height: 0;
     margin: 0 auto;
     background-color: $color-white;
+
+    @include md {
+      @include center-vertical;
+      display: block;
+      width: auto;
+      height: 7rem;
+      margin: 0;
+      background-color: #eaecec;
+    }
   }
 
   .show {
@@ -131,6 +188,13 @@ export default {
     position: relative;
     height: 5rem;
     padding-left: 1.5rem;
+
+    @include md {
+      display: inline-block;
+      height: 4rem;
+      width: 13rem;
+      padding: 2.3rem 0 0 0;
+    }
     span {
       display: block;
       position: relative;
@@ -139,6 +203,10 @@ export default {
       width: 2.4rem;
       height: 2.4rem;
       background-color: $blue;
+
+      @include md {
+        display: inline-block;
+      }
 
       &::before {
         content: "";
@@ -149,6 +217,10 @@ export default {
         top: 0;
         left: 0;
         background-color: #eaecec;
+
+        @include md {
+          background-color: white;
+        }
       }
     }
 
@@ -159,6 +231,10 @@ export default {
       width: 90%;
       height: 2.5rem;
       z-index: 1;
+
+      @include md {
+        width: 80%;
+      }
 
       &:hover {
         + span::before {
@@ -187,6 +263,10 @@ export default {
           border-radius: .2rem;
           transition: .2s ease-in-out;
           background-color: $lighter-gray;
+
+          @include md {
+            background-color: $color-white;
+          }
         }
       }
     }
@@ -196,6 +276,14 @@ export default {
       width: 12rem;
       font-size: 1.2rem;
       padding-left: 1rem;
+
+      @include md {
+        position: absolute;
+        display: inline-block;
+        width: 8rem;
+        font-size: 1.2rem;
+        margin-top: .6rem;
+      }
     }
   }
 </style>

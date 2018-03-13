@@ -2,7 +2,7 @@
   <div class="filter-results">
     <div class="container">
       <div class="filter-results__filter">
-        <h1 class="dealer-amount">{{ dealers }} dealers</h1>
+        <h1 class="dealer-amount">{{ dealerLen }} dealers</h1>
         <h1 class="filter-results__title">Filter Results</h1>
       </div>
       <div class="filter-results__options">
@@ -34,10 +34,14 @@
 <script>
 export default {
   name: 'filterResultsLarge',
+  props: ['dealers'],
   data () {
     return {
-      dealers: 0
+      dealerLen: 0
     }
+  },
+  mounted () {
+    this.dealerLen = this.dealers.length
   }
 }
 </script>
@@ -124,7 +128,6 @@ export default {
         height: 2.4rem;
         top: 0;
         left: 0;
-        // background-color: #eaecec;
         background-color: white;
       }
     }

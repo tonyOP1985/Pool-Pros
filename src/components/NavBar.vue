@@ -44,8 +44,8 @@
             </ul>
           </div>
           <div class="navbar__btn">
-            <a href="#">
-              <img src="/static/img/location-icon.png" alt="location" title="Find a Pool Pro" @click="getProDealers">
+            <a href="#" @click="getProDealers">
+              <img src="/static/img/location-icon.png" alt="location" title="Find a Pool Pro">
               Find a Pool Pro
             </a>
           </div>

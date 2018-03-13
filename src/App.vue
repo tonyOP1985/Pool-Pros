@@ -4,12 +4,12 @@
     <NavBar :windowWidth="windowWidth" @getProDealers="sendDealers"></NavBar>
     <Jumbotron></Jumbotron>
     <Directions :dealers="dealers"></Directions>
-    <div class="filter-mobile" v-show="windowWidth < 768">
-      <FilterResults></FilterResults>
+    <div class="filter-mobile" v-show="dealers.length">
+      <FilterResults :dealers="dealers" :windowWidth="windowWidth"></FilterResults>
     </div>
-    <div class="filter-large" v-show="windowWidth >= 768">
-      <FilterResultsLarge></FilterResultsLarge>
-    </div>
+    <!-- <div class="filter-large" v-show="windowWidth >= 768 && dealers.length">
+      <FilterResultsLarge :dealers="dealers"></FilterResultsLarge>
+    </div> -->
     <Dealers :dealers="dealers"></Dealers>
     <SiteFooter></SiteFooter>
   </div>
