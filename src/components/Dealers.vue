@@ -8,16 +8,26 @@
         :key="index">
 
         <h1>{{ dealer.data.name }}</h1>
-        <button
-          class="dealer-info__phone">
-          <img src="/static/img/phone-icon-mobile.png" alt="phone">
-          <span class="tap">
-            Tap to call
-          </span>
-          <span class="phone">
-            {{ removeDash(dealer.data.phone1) }}
-          </span>
-        </button>
+        <hr>
+        <div class="phone-wrapper">
+          <button
+            class="dealer-info__phone">
+            <img src="/static/img/phone-icon-mobile.png" alt="phone">
+            <span class="tap">
+              Tap to call
+            </span>
+            <span class="phone">
+              {{ removeDash(dealer.data.phone1) }}
+            </span>
+          </button>
+
+          <div class="dealer-info__phone__md">
+            <img src="/static/img/phone-icon-desktop.png" alt="phone">
+            <span class="phone">
+              {{ removeDash(dealer.data.phone1) }}
+            </span>
+          </div>
+        </div>
 
         <p>Can't talk? Click below to send an email.</p>
         <button
@@ -103,19 +113,32 @@ export default {
     @include md {
       margin-top: 5rem;
     }
+    @include lg {
+      width: 99.2rem;
+      margin: 5rem auto 0 auto;
+    }
   }
 
   .dealers {
     width: 100%;
     background-color: $color-white;
+
+    @include md {
+      @include space-around;
+      flex-wrap: wrap;
+    }
   }
 
   .dealer-info {
     width: 30rem;
-    margin: 0 auto;
+    margin: 2rem auto;
     padding-top: 2rem;
     border: .1rem solid $off-white;
     border-radius: .4rem;
+
+    @include md {
+      border-radius: .6rem;
+    }
 
     h1 {
       width: 100%;
@@ -136,6 +159,27 @@ export default {
       padding: 2rem 0;
     }
 
+    hr {
+      display: none;
+
+      @include md {
+        display: block;
+        height: .1rem;
+        width: 90%;
+        border: 0;
+        border-top: 1px solid $off-white;
+        margin: 0 auto 2rem auto;
+        padding: 0;
+      }
+    }
+
+    .phone-wrapper {
+      @include md {
+        width: 100%;
+        height: 4rem;
+      }
+    }
+
     .dealer-info__phone {
       position: relative;
       display: block;
@@ -147,6 +191,10 @@ export default {
       color: $color-white;
       margin: 0 auto;
       cursor: pointer;
+
+      @include md {
+        display: none;
+      }
 
       img {
         display: inline-block;
@@ -172,6 +220,38 @@ export default {
         left: 8.8rem;
         top: .8rem;
         font-size: 1.4rem;
+        font-weight: 600;
+        letter-spacing: .1rem;
+      }
+    }
+
+    .dealer-info__phone__md {
+      display: none;
+      @include md {
+        position: relative;
+        display: block;
+        width: 21rem;
+        height: 3.1rem;
+        border: none;
+        margin: 0 auto;
+      }
+
+      img {
+        display: inline-block;
+        position: absolute;
+        left: 1.5rem;
+        top: .7rem;
+        height: 2.5rem;
+        margin: 0;
+      }
+
+      .phone {
+        display: inline-block;
+        position: absolute;
+        left: 5rem;
+        top: .8rem;
+        font-family: $text-secondary;
+        font-size: 1.8rem;
         font-weight: 600;
         letter-spacing: .1rem;
       }

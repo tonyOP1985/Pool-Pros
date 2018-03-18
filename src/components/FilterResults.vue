@@ -2,39 +2,28 @@
   <div class="filter-results">
     <div class="container">
       <div class="filter-results__filter" v-show="windowWidth < 768">
-        <h1 class="dealer-amount">{{ dealers.length }} dealers</h1>
+        <h1 class="dealer-amount">{{ filterDealers.length }} dealers</h1>
         <button @click="show = !show">
           <h1>Filter Results</h1>
           <span>&#9662;</span>
         </button>
       </div>
       <div class="filter-results__filter" v-show="windowWidth >= 768">
-        <h1 class="dealer-amount">{{ dealers.length }} dealers</h1>
+        <h1 class="dealer-amount">{{ filterDealers.length }} dealers</h1>
         <h1 class="filter-results__title">Filter Results</h1>
       </div>
       <div class="filter-results__options" v-bind:class="{ show: show }">
-        <div class="option">
-          <input type="checkbox" name="service" id="service">
+        <div class="option" v-for="(option, index) in options" :key="index">
+          <input type="checkbox"
+                name="service"
+                v-model="checkedOptions"
+                :value="option">
           <span></span>
-          <label for="service">Service</label>
-        </div>
-        <div class="option">
-          <input type="checkbox" name="installation" id="installation">
-          <span></span>
-          <label for="installation">Installation</label>
-        </div>
-        <div class="option">
-          <input type="checkbox" name="residential" id="residential">
-          <span></span>
-          <label for="residential">Residential</label>
-        </div>
-        <div class="option">
-          <input type="checkbox" name="commercial" id="commerical">
-          <span></span>
-          <label for="Commercial">Commercial</label>
+          <label for="service">{{ (option.split(' '))[0] }}</label>
         </div>
       </div>
     </div>
+    <p>checkedOptions{{ checkedOptions }}</p>
   </div>
 </template>
 
@@ -44,7 +33,35 @@ export default {
   props: ['dealers', 'windowWidth'],
   data () {
     return {
-      show: false
+      show: false,
+      checkedOptions: [],
+      options: ['Service Pro', 'Installation Pro', 'Residential Pro', 'Commercial Pro'],
+      service: true,
+      installation: true,
+      residential: true,
+      commercial: true
+    }
+  },
+  method: {
+    sortArray (arr1, arr2) {
+      return arr1.sort() === arr2.sort()
+    },
+    printfilter () {
+      console.log(this.filterDealers())
+    }
+  },
+  computed: {
+    filterDealers (event) {
+      if (!this.checkedOptions.length) return this.dealers
+
+      let proArr = this.dealers.filter((dealer) => {
+        for (let i = 0; i < this.checkedOptions.length; i++) {
+          if (!dealer.data.certifications.includes(this.checkedOptions[i])) return false
+        }
+        return true
+      })
+      console.log(proArr)
+      return proArr
     }
   }
 }
@@ -74,7 +91,7 @@ export default {
 
   .container {
     @include container;
-
+    width: 100%;
     @include md {
       width: 76.8rem;
       height: 7rem;
