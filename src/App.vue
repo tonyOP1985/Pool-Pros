@@ -1,16 +1,16 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{ hideScrollBar: hideScroll }">
     <TopHeader></TopHeader>
-    <NavBar :windowWidth="windowWidth" @getProDealers="sendDealers"></NavBar>
+    <NavBar :windowWidth="windowWidth" @getProDealers="sendDealers" @openSideNav="hideScrollBar"></NavBar>
     <Jumbotron></Jumbotron>
-    <Directions :dealers="dealers"></Directions>
+    <Directions></Directions>
     <div class="filter-mobile" v-show="dealers.length">
       <FilterResults :dealers="dealers" :windowWidth="windowWidth"></FilterResults>
     </div>
     <!-- <div class="filter-large" v-show="windowWidth >= 768 && dealers.length">
       <FilterResultsLarge :dealers="dealers"></FilterResultsLarge>
     </div> -->
-    <Dealers :dealers="dealers"></Dealers>
+    <!-- <Dealers :dealers="dealers"></Dealers> -->
     <SiteFooter></SiteFooter>
   </div>
 </template>
@@ -23,7 +23,7 @@ import Directions from './components/Directions.vue'
 import SiteFooter from './components/SiteFooter.vue'
 import FilterResults from './components/FilterResults.vue'
 import FilterResultsLarge from './components/FilterResultsLarge.vue'
-import Dealers from './components/Dealers.vue'
+// import Dealers from './components/Dealers.vue'
 
 export default {
   name: 'App',
@@ -34,13 +34,14 @@ export default {
     TopHeader,
     SiteFooter,
     FilterResults,
-    FilterResultsLarge,
-    Dealers
+    FilterResultsLarge
+    // Dealers
   },
   data () {
     return {
       windowWidth: 0,
-      dealers: {}
+      dealers: {},
+      hideScroll: false
     }
   },
   mounted () {
@@ -59,7 +60,9 @@ export default {
     },
     sendDealers (pros) {
       this.dealers = pros
-      console.log(this.dealers)
+    },
+    hideScrollBar (bool) {
+      this.hideScroll = bool
     }
   },
   beforeDestroy () {
@@ -73,9 +76,16 @@ export default {
   #app {
     width: 100%;
     overflow: hidden;
+    position: relative;
   }
 
   .filter-large {
     height: 12rem;
+  }
+
+  .hideScrollBar {
+    overflow: hidden;
+    height: 100%;
+    position: fixed;
   }
 </style>

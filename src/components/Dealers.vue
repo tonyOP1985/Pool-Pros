@@ -1,10 +1,10 @@
 <template>
   <div class="dealers-wrapper">
-    <div class="dealers" v-if="!dealers"></div>
+    <div class="dealers" v-if="!filterDealers"></div>
     <div class="dealers" else>
       <div
         class="dealer-info"
-        v-for="(dealer, index) in dealers"
+        v-for="(dealer, index) in filterDealers"
         :key="index">
 
         <h1>{{ dealer.data.name }}</h1>
@@ -59,21 +59,18 @@
 </template>
 
 <script>
-// import dealers from './dealer.json'
 export default {
   name: 'Dealers',
-  props: ['dealers'],
+  props: ['filterDealers'],
   data () {
     return {
-      // dealerList: dealers.dealers,
+      dealers: [],
       certImage: [
         { name: 'Installation', image: 'star-installation-pro.png' },
         { name: 'Commercial', image: 'users-commercial-pro.png' },
         { name: 'Residential', image: 'home-residential-pro.png' },
         { name: 'Service', image: 'gear-service-pro.png' }
       ],
-      // weekHours: this.dealers[0].data.weekHours,
-      // pros: [],
       operationOpen: []
     }
   },
@@ -98,9 +95,6 @@ export default {
       } else {
         return hours
       }
-    },
-    printDealers () {
-      console.log(this.dealers[0])
     }
   }
 }
@@ -124,7 +118,7 @@ export default {
     background-color: $color-white;
 
     @include md {
-      @include space-around;
+      display: flex;
       flex-wrap: wrap;
     }
   }
@@ -133,11 +127,18 @@ export default {
     width: 30rem;
     margin: 2rem auto;
     padding-top: 2rem;
-    border: .1rem solid $off-white;
+    border: .1rem solid $lighter-gray;
     border-radius: .4rem;
 
     @include md {
       border-radius: .6rem;
+      margin: 2rem auto;
+      display: inline-block;
+      box-shadow: 0 3px 10px -1px $light-gray;
+    }
+
+    @include lg {
+      margin: 2rem 0 2rem 2.4rem;
     }
 
     h1 {
@@ -311,7 +312,8 @@ export default {
     .dealer-info__certifactions {
       width: 100%;
       height: 7rem;
-      background-color: $off-white;
+      // background-color: $off-white;
+      background-color: #eaecec;
       margin-top: 2rem;
       font-family: $text-primary;
 

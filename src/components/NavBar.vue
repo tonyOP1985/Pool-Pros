@@ -14,13 +14,29 @@
           </a>
         </div>
         <div class="navbar__menu-icon">
-          <img src="/static/img/menu-icon-mobile.png" alt="Menu-Icon" v-on:click="openSideNav">
+          <img src="/static/img/menu-icon-mobile.png" alt="Menu-Icon" @click="openSideNav">
         </div>
-        <div class="nav__menu-sm" v-bind:class="{ open : isOpen }">
-          <!-- todo: change to v-show to get transition functionality -->
-          <!-- <transition name="fade"> -->
-            <NavBarMobileDropDown v-bind:menuLinks="menuLinks"></NavBarMobileDropDown>
-          <!-- </transition> -->
+        <div class="navbar-mobile-wrapper" :class="{ open : isOpen }">
+          <ul class="nav__menu-items-sm">
+            <li class="nav__close" @click="openSideNav">
+              <span class="nav__close__close">&#10006;</span>
+              <a href="#">Home</a>
+            </li>
+            <li class="nav__menu-item-sm" v-for="(menuLink, index) in menuLinks" :key="index">
+              <a class="nav__menu-item__link" href="#" @click="openNav(index)">
+                {{ menuLink.menuTitle }}
+              </a>
+              <ul class="nav__submenu-sm" :class="{ openSubMenu: show[index].subOpen }">
+                <li class="nav__close" @click="openNav(index)">
+                  <span class="nav__close__close">&#10006;</span>
+                  <a href="#">{{ menuLink.menuTitle }}</a>
+                </li>
+                <li v-for="item in menuLink.menuItems" :key="item">
+                  <a class="nav__subitem" href="#">{{ item }}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
       <div class="nav-lg" v-show="windowWidth >= 768">
@@ -31,12 +47,12 @@
           </div>
           <div class="nav__menu">
             <ul class="nav__menu-items">
-              <li class="nav__menu-item" v-for="(menuLink, index) in menuLinks" v-bind:key="index">
+              <li class="nav__menu-item" v-for="(menuLink, index) in menuLinks" :key="index">
                 <a href="#">
                   {{ menuLink.menuTitle }}
                 </a>
                 <ul class="nav__submenu">
-                  <li v-for="(item, index) in menuLink.menuItems" v-bind:key="index">
+                  <li v-for="(item, index) in menuLink.menuItems" :key="index">
                     <a href="#">{{ item }}</a>
                   </li>
                 </ul>
@@ -55,20 +71,22 @@
 </template>
 
 <script>
-import NavBarMobileDropDown from './NavBarMobileDropDown.vue'
+// import NavBarMobileDropDown from './NavBarMobileDropDown.vue'
 import dealers from './dealer.json'
 
 export default {
   name: 'navBar',
-  components: {
-    NavBarMobileDropDown
-  },
+  // components: {
+  //   NavBarMobileDropDown
+  // },
   props: ['windowWidth'],
   data () {
     return {
       // windowWidth: 0,
       isOpen: false,
+      openSubMenu: false,
       dealers: dealers.dealers,
+      show: [{subOpen: false}, {subOpen: false}, {subOpen: false}, {subOpen: false}],
       menuLinks: [
         {
           menuTitle: 'Pools & Spas',
@@ -121,6 +139,11 @@ export default {
   methods: {
     openSideNav () {
       this.isOpen = !this.isOpen
+      this.$emit('openSideNav', this.isOpen)
+    },
+    openNav (n) {
+      // this.openSubMenu = !this.openSubMenu
+      this.show[n].subOpen = !this.show[n].subOpen
     },
     getProDealers (e) {
       this.$emit('getProDealers', this.dealers)
@@ -260,11 +283,8 @@ export default {
     @include md {
       width: 45rem;
       position: relative;
-      margin-top: 0;
+      margin: 0 auto;
       @include center-vertical
-    }
-    @include lg {
-      margin-left: 15%;
     }
   }
 
@@ -291,11 +311,23 @@ export default {
   }
 
  .nav__submenu {
-    display: none;
+    padding-top: 1.1rem;
+    display: block;
+    opacity: 0;
     position: absolute;
+    top: 3rem;
     min-width: 22rem;
-    padding-top: 2.7rem;
-    z-index: 2;
+    z-index: -1;
+    transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+
+    @include md {
+      top: 4rem;
+    }
+
+    @include lg {
+      padding-top: 2.3rem;
+      top: 3rem;
+    }
 
     li {
       list-style: none;
@@ -314,32 +346,132 @@ export default {
       }
     }
   }
+
   .nav__menu-item:hover .nav__submenu {
     display: block;
+    opacity: 1;
+    z-index: 1;
+    transition-delay: all 0s, 0s, 0.3s;
   }
 
-  .nav__menu-sm {
-    width: 100%;
-    display: none;
-    height: 100vh;
-    position: fixed;
+  // mobile side nav
+  .navbar-mobile-wrapper {
+    height:100%;
+    width:0;
+    position:fixed;
+    z-index:1;
     top:0;
-    left: 0;
-    margin-top: 5rem;
-    // background-color: #ebebeb;
-    background-color: #fff;
-    overflow: hidden;
-    transition: .5s;
+    right: 0;
+    background-color: $color-white;
+    overflow-x:hidden;
+    padding-top: 2rem;
+    transition:0.5s;
   }
 
   .open {
-    display: block;
+    width: 25rem;
+    overflow-x:hidden;
   }
 
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
+  .nav__menu-item-sm {
+    width: 25rem;
+    height: 3rem;
+    margin: 0 auto;
+    list-style: none;
+    display: block;
+    @include center-vertical;
+
+    .nav__menu-item__link {
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: $blue;
+      background: url(/static/img/next-arrow.png) no-repeat right;
+      background-size: .8rem;
+      width: 12rem;
+      width: 80%;
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+
+      &:hover {
+        color: lighten($blue, 15%);
+      }
+    }
   }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    opacity: 0;
+
+  .nav__submenu-sm {
+    height:100%;
+    width:0;
+    position:fixed;
+    z-index:2;
+    top:0;
+    right: 0;
+    background-color: $color-white;
+    overflow-x:hidden;
+    padding-top: 2rem;
+    transition:0.5s;
+
+    .nav__close {
+      height: 3.3rem;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      width: 25rem;
+      height: 3rem;
+      margin: 0 auto;
+      list-style: none;
+      display: block;
+      @include center-vertical;
+    }
+  }
+
+  .openSubMenu {
+    width: 25rem;
+  }
+
+  .nav__subitem {
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: $blue;
+    // background-size: .8rem;
+    width: 25rem;
+    height: 3rem;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+
+    &:hover {
+      color: lighten($blue, 15%);
+    }
+  }
+
+  .nav__close {
+    width: 25rem;
+    height: 3.3rem;
+    padding: 0 2rem;
+    font-size: 2rem;
+    color: $light-gray;
+    list-style: none;
+    cursor: pointer;
+    border-bottom: .1rem solid $lighter-gray;
+
+  .nav__close__close {
+    display: inline-block;
+    padding-bottom: .5rem;
+  }
+
+    a {
+      width: 16rem;
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+      font-family: $text-secondary;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: $blue;
+    }
   }
 </style>

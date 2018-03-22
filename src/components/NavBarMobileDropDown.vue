@@ -1,19 +1,17 @@
 <template>
-  <div class="navbar-mobile-wrapper">
+  <div class="navbar-mobile-wrapper" :class="{ open : isOpen }">
     <ul class="nav__menu-items-sm">
-      <li class="nav__menu-item-sm" v-for="(menuLink, index) in menuLinks" v-bind:key="index">
-        <a class="nav__menu-item__link" href="#" v-on:click="openNav(index)">
+      <li class="nav__close">&#10006;</li>
+      <li class="nav__menu-item-sm" v-for="(menuLink, index) in menuLinks" :key="index">
+        <a class="nav__menu-item__link" href="#" @click="openNav(index)">
           {{ menuLink.menuTitle }}
         </a>
-        <!-- v-bind:class="{ open: isOpen }" -->
-        <transition name="fade">
-          <ul class="nav__submenu-sm" v-show="show[index].isOpen">
-            <li class="nav__submenu-sm__close" v-on:click="openNav(index)">&#10006;</li>
-            <li v-for="item in menuLink.menuItems" v-bind:key="item">
-              <a class="nav__subitem" href="#">{{ item }}</a>
-            </li>
-          </ul>
-        </transition>
+        <ul class="nav__submenu-sm" v-show="show[index].subOpen">
+          <li class="nav__close" @click="openNav(index)">&#10006;</li>
+          <li v-for="item in menuLink.menuItems" :key="item">
+            <a class="nav__subitem" href="#">{{ item }}</a>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>
@@ -22,19 +20,20 @@
 <script>
 export default {
   name: 'NavBarMobile',
-  props: ['menuLinks'],
+  props: ['menuLinks', 'isOpen'],
   data () {
     return {
       // isOpen: false,
-      show: [{isOpen: false}, {isOpen: false}, {isOpen: false}, {isOpen: false}]
+      show: [{subOpen: false}, {subOpen: false}, {subOpen: false}, {subOpen: false}],
+      close: true
     }
   },
   methods: {
-    openSubNav () {
-      this.isOpen = !this.isOpen
-    },
+    // openSubNav () {
+    //   this.isOpen = !this.isOpen
+    // },
     openNav (n) {
-      this.show[n].isOpen = !this.show[n].isOpen
+      this.show[n].subOpen = !this.show[n].subOpen
     }
   }
 }
@@ -42,11 +41,30 @@ export default {
 
 <style lang="scss" scoped>
   @import "../assets/app.scss";
-  // .nav__menu-items-sm{
-  // }
+
+  .navbar-mobile-wrapper {
+    height:100%;
+    width:0;
+    position:fixed;
+    z-index:1;
+    top:0;
+    left:0;
+    background-color: $color-white;
+    overflow-x:hidden;
+    padding-top: 2rem;
+    transition:0.5s;
+  }
+
+  .open {
+    width: 25rem;
+  }
+
+  .close {
+    width: 0;
+  }
 
   .nav__menu-item-sm {
-    width: 100%;
+    width: 25rem;
     height: 3rem;
     margin: 0 auto;
     list-style: none;
@@ -60,7 +78,7 @@ export default {
       color: $blue;
       background: url(/static/img/next-arrow.png) no-repeat right;
       background-size: .8rem;
-      // width: 12rem;
+      width: 12rem;
       width: 80%;
       display: block;
       margin: 0 auto;
@@ -111,9 +129,12 @@ export default {
     display: block;
   }
 
-  .nav__submenu-sm__close {
+  .nav__close {
     padding: 0 2rem;
     font-size: 2rem;
+    float: right;
+    color: $light-gray;
+    list-style: none;
     cursor: pointer;
   }
 
