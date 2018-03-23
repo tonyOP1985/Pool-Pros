@@ -8,7 +8,7 @@
           </div>
           <div class="steps__info">
             <h1>Choose a pro</h1>
-            <p>Make sure you ZIP  code is correct, then choose a pro from the list below.</p>
+            <p>Click "Find a Pro" at the top, then choose a pro from the list below.</p>
           </div>
         </div>
         <div class="steps">
@@ -26,7 +26,7 @@
           </div>
           <div class="steps__info">
             <h1>A pro visits</h1>
-            <p class="visit-p">A pro will visit you home and assess you pool & spa needs.</p>
+            <p class="visit-p">A pro will visit your home and assess your pool & spa needs.</p>
           </div>
         </div>
       </div>
@@ -66,14 +66,9 @@ export default {
       @include space-around;
     }
     @include lg {
-      // width: 76.2rem;
       width: 99.2rem;
       margin: 0 auto;
     }
-    // @include xl {
-    //   width: 70%;
-    //   margin: 0 auto;
-    // }
   }
 
   .container {
@@ -86,7 +81,6 @@ export default {
   .steps {
     @include space-around;
 
-    // width: 85%;
     width: 26.6rem;
     margin: 2rem auto;
 
