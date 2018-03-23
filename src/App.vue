@@ -1,13 +1,19 @@
 <template>
-  <div id="app" :class="{ hideScrollBar: hideScroll }">
-    <TopHeader></TopHeader>
-    <NavBar :windowWidth="windowWidth" @getProDealers="sendDealers" @openSideNav="hideScrollBar"></NavBar>
-    <Jumbotron></Jumbotron>
-    <Directions></Directions>
-    <div class="filter-mobile" v-show="dealers.length">
-      <FilterResults :dealers="dealers" :windowWidth="windowWidth"></FilterResults>
+  <div id="app" class="app" :class="{ hideScrollBar: hideScroll }">
+    <header>
+      <TopHeader></TopHeader>
+      <NavBar :windowWidth="windowWidth" @getProDealers="sendDealers" @openSideNav="hideScrollBar"></NavBar>
+    </header>
+    <div class="content">
+      <Jumbotron></Jumbotron>
+      <Directions></Directions>
+      <div class="filter-mobile" v-show="dealers.length">
+        <FilterResults :dealers="dealers" :windowWidth="windowWidth"></FilterResults>
+      </div>
     </div>
-    <SiteFooter></SiteFooter>
+    <footer>
+      <SiteFooter></SiteFooter>
+    </footer>
   </div>
 </template>
 
@@ -66,13 +72,24 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "assets/app.scss";
-  #app {
+  .app {
     width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     overflow: hidden;
     position: relative;
-    flex: 1;
+  }
+
+  .content {
+    flex-grow: 1;
+  }
+
+  header, .content, footer {
+    flex-shrink: 0;
   }
 
   .filter-large {
@@ -80,8 +97,6 @@ export default {
   }
 
   .hideScrollBar {
-    overflow: hidden;
-    height: 100%;
     position: fixed;
   }
 </style>

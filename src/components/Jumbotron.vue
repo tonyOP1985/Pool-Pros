@@ -52,11 +52,6 @@ export default {
     }
   }
 
-  @mixin inner-overlay {
-    width: 75%;
-    position: absolute;
-  }
-
   .jumbotron-overlay {
     width: 100%;
     height: 100%;
@@ -68,6 +63,7 @@ export default {
     }
     @include md {
       height: 35rem;
+      background-color: rgba(0, 0, 0, 0.3);
     }
     @include xl {
       height: 35rem;
@@ -77,9 +73,10 @@ export default {
     }
 
     .jumbotron__message-main {
-      @include inner-overlay;
       top: 19%;
       left: 12%;
+      width: 80%;
+      position: absolute;
 
       @include sm {
         top: 26%;
@@ -108,7 +105,8 @@ export default {
     }
 
     .jumbotron__message-tag {
-      @include inner-overlay;
+      width: 80%;
+      position: absolute;
       top: 44%;
       left: 12%;
       @include lg {
@@ -128,7 +126,8 @@ export default {
     }
 
     .jumbotron__message-sub {
-      @include inner-overlay;
+      width: 75%;
+      position: absolute;
       top: 70%;
       left: 12%;
       p {
@@ -140,14 +139,14 @@ export default {
         font-family: $text-secondary;
 
         @include lg {
-          // font-size: 1.5rem;
           font-size: 1.8rem;
         }
       }
     }
 
     .jumbotron__message-hr {
-      @include inner-overlay;
+      width: 80%;
+      position: absolute;
       top: 58%;
       left: 12%;
 
