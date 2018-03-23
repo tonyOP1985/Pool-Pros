@@ -8,4 +8,4 @@ app.use(serveStatic(path.join(__dirname + "/dist")))
 
 const port = process.env.PORT || 3000
 
-app.listen(3000)
+app.listen(port)
