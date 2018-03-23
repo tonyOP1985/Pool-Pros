@@ -67,8 +67,6 @@ export default {
       height: 35rem;
     }
     @include md {
-      // background-color: rgba(0, 0, 0, .1);
-      // background-color: rgba($blue, .1);
       height: 35rem;
     }
     @include xl {
@@ -93,7 +91,7 @@ export default {
         color: #fff;
         font-size: 2.5rem;
         font-weight: 300;
-        font-family: 'Roboto', sans-serif;
+        font-family: $text-secondary;
         text-align: center;
         text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
 
@@ -104,7 +102,6 @@ export default {
           font-size: 3rem;
         }
         @include lg {
-          // font-size: 3.8rem;
           font-size: 5rem;
         }
       }
@@ -121,11 +118,10 @@ export default {
         text-transform: uppercase;
         font-size: 1.3rem;
         font-weight: 700;
-        color: rgb(46, 142, 174);
+        color: rgb(91, 184, 214);
         text-align: center;
         text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8);
         @include lg {
-          // font-size: 1.7rem;
           font-size: 2rem;
         }
       }
@@ -141,6 +137,7 @@ export default {
         color: #fff;
         text-align: center;
         letter-spacing: 0;
+        font-family: $text-secondary;
 
         @include lg {
           // font-size: 1.5rem;

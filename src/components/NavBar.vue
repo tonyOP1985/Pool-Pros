@@ -9,7 +9,8 @@
         </div>
         <div class="navbar__btn">
           <a href="#" @click="getProDealers">
-            <img src="/static/img/location-icon.png" alt="location" title="Find a Pool Pro">
+            <!-- <img src="/static/img/location-icon.png" alt="location" title="Find a Pool Pro"> -->
+            <i class="fas fa-map-marker-alt fa-lg"></i>
             Find a Pro
           </a>
         </div>
@@ -61,7 +62,8 @@
           </div>
           <div class="navbar__btn">
             <a href="#" @click="getProDealers">
-              <img src="/static/img/location-icon.png" alt="location" title="Find a Pool Pro">
+              <!-- <img src="/static/img/location-icon.png" alt="location" title="Find a Pool Pro"> -->
+              <i class="fas fa-map-marker-alt fa-lg"></i>
               Find a Pool Pro
             </a>
           </div>
@@ -247,6 +249,7 @@ export default {
       color: $blue;
       text-transform: uppercase;
       text-decoration: none;
+      font-size: 1.15rem;
       font-weight: 900;
       text-align: center;
       cursor: pointer;
@@ -257,10 +260,11 @@ export default {
       width: 13rem;
       padding: 0 1rem;
     }
-
-      img {
+      // img
+      svg {
         height: 1.8rem;
         margin: 0 .4rem 0 1rem;
+        color: $blue;
 
         @include md {
           margin: 0 .4rem 0 .5rem;
@@ -375,11 +379,15 @@ export default {
 
   .nav__menu-item-sm {
     width: 25rem;
-    height: 3rem;
+    height: 4rem;
     margin: 0 auto;
     list-style: none;
     display: block;
     @include center-vertical;
+
+    &:hover {
+      background-color: $off-white;
+    }
 
     .nav__menu-item__link {
       text-decoration: none;
@@ -388,15 +396,13 @@ export default {
       color: $blue;
       background: url(/static/img/next-arrow.png) no-repeat right;
       background-size: .8rem;
-      width: 12rem;
       width: 80%;
+      height: 4rem;
       display: block;
       margin: 0 auto;
       text-align: center;
 
-      &:hover {
-        color: lighten($blue, 15%);
-      }
+      @include center-vertical;
     }
   }
 
@@ -414,16 +420,20 @@ export default {
 
     .nav__close {
       height: 3.3rem;
-      margin-bottom: 1rem;
+      margin-bottom: .5rem;
     }
 
     li {
       width: 25rem;
-      height: 3rem;
+      height: 4rem;
       margin: 0 auto;
       list-style: none;
       display: block;
       @include center-vertical;
+
+      &:hover {
+        background-color: $off-white;
+      }
     }
   }
 
@@ -434,17 +444,18 @@ export default {
   .nav__subitem {
     text-decoration: none;
     font-size: 1.4rem;
-    font-weight: 700;
+    font-weight: 600;
     color: $blue;
-    // background-size: .8rem;
     width: 25rem;
-    height: 3rem;
+    height: 4rem;
     display: block;
     margin: 0 auto;
+    padding-left: 1rem;
     text-align: center;
+    @include center-vertical;
 
     &:hover {
-      color: lighten($blue, 15%);
+      background-color: $off-white;
     }
   }
 

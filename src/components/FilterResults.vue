@@ -121,7 +121,7 @@ export default {
       height: 2rem;
       margin-top: 2.7rem;
       color: $blue;
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       text-align: center;
 
       @include md {

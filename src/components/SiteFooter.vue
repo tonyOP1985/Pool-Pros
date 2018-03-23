@@ -139,7 +139,7 @@ export default {
     background-color: $light-blue;
     color: $off-white;
     font-family: $text-primary;
-    font-size: 1rem;
+    font-size: .9rem;
   }
 
   .footer__bottom__commercial {
@@ -182,6 +182,10 @@ export default {
           color: $off-white;
           padding-top: .5rem;
           position: relative;
+
+          &:hover {
+            text-decoration: underline;
+          }
           img {
             display: inline-block;
             height: 1.1rem;
@@ -232,6 +236,10 @@ export default {
         a {
           text-decoration: none;
           color: $off-white;
+
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
     }

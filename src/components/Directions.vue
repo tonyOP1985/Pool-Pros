@@ -91,7 +91,7 @@ export default {
   }
 
   .steps__info {
-    padding: 0 1rem;
+    padding: 0 0 0 1rem;
     width: 20.2rem;
     h1 {
       font-size: 1.5rem;
@@ -120,7 +120,7 @@ export default {
   }
 
   .visit-p {
-    width: 15rem;
+    width: 16rem;
   }
 
   .water-img {
