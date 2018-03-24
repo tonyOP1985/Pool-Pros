@@ -9,7 +9,6 @@
         </div>
         <div class="navbar__btn">
           <a href="#dealers" @click="getProDealers">
-            <!-- <img src="/static/img/location-icon.png" alt="location" title="Find a Pool Pro"> -->
             <i class="fas fa-map-marker-alt fa-lg"></i>
             Find a Pro
           </a>
@@ -49,7 +48,7 @@
           <div class="nav__menu">
             <ul class="nav__menu-items">
               <li class="nav__menu-item" v-for="(menuLink, index) in menuLinks" :key="index">
-                <a href="#">
+                <a href="#" target="_self" :title="menuLink.menuTitle">
                   {{ menuLink.menuTitle }}
                 </a>
                 <ul class="nav__submenu">
@@ -62,7 +61,6 @@
           </div>
           <div class="navbar__btn">
             <a href="#dealers" @click="getProDealers">
-              <!-- <img src="/static/img/location-icon.png" alt="location" title="Find a Pool Pro"> -->
               <i class="fas fa-map-marker-alt fa-lg"></i>
               Find a Pool Pro
             </a>
