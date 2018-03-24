@@ -8,7 +8,7 @@
           </a>
         </div>
         <div class="navbar__btn">
-          <a href="#dealers" @click="getProDealers">
+          <a href="#" @click="getProDealers">
             <i class="fas fa-map-marker-alt fa-lg"></i>
             Find a Pro
           </a>
@@ -48,7 +48,7 @@
           <div class="nav__menu">
             <ul class="nav__menu-items">
               <li class="nav__menu-item" v-for="(menuLink, index) in menuLinks" :key="index">
-                <a href="#navbar" target="_self" :title="menuLink.menuTitle">
+                <a href="#" :title="menuLink.menuTitle">
                   {{ menuLink.menuTitle }}
                 </a>
                 <ul class="nav__submenu">
@@ -60,7 +60,7 @@
             </ul>
           </div>
           <div class="navbar__btn">
-            <a href="#dealers" @click="getProDealers">
+            <a href="#" @click="getProDealers">
               <i class="fas fa-map-marker-alt fa-lg"></i>
               Find a Pool Pro
             </a>
@@ -303,10 +303,12 @@ export default {
   }
 
   .nav__menu-item {
+    list-style: none;
     @include md {
       width: auto;
       height: auto;
       margin: 1rem 0 0 0;
+      list-style: none;
       @include horizontal-list;
     }
 
