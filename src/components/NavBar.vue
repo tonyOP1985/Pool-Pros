@@ -71,18 +71,13 @@
 </template>
 
 <script>
-// import NavBarMobileDropDown from './NavBarMobileDropDown.vue'
 import dealers from './dealer.json'
 
 export default {
   name: 'navBar',
-  // components: {
-  //   NavBarMobileDropDown
-  // },
   props: ['windowWidth'],
   data () {
     return {
-      // windowWidth: 0,
       isOpen: false,
       openSubMenu: false,
       dealers: dealers.dealers,
@@ -160,7 +155,6 @@ export default {
     width: 100%;
     height: 5rem;
     font-family: $text-primary;
-    // display: inline-block;
 
     @include lg {
       height: 8rem;
@@ -310,6 +304,7 @@ export default {
       margin: 1rem 0 0 0;
       list-style: none;
       @include horizontal-list;
+      cursor: pointer;
     }
 
     a {
@@ -322,6 +317,7 @@ export default {
         background: url(/static/img/down-arrow.png) no-repeat right;
         background-size: .8rem;
         padding: 1.8rem;
+        cursor: pointer;
       }
     }
   }
@@ -335,6 +331,7 @@ export default {
     min-width: 22rem;
     z-index: -1;
     transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+    cursor: pointer;
 
     @include md {
       top: 3.9rem;
@@ -355,6 +352,7 @@ export default {
         background-color: #fff;
         padding: 1.2rem 1.6rem;
         display: block;
+        cursor: pointer;
 
         &:hover {
           background-color: #eee;
