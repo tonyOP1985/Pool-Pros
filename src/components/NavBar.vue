@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
     <div class="container">
-      <div class="nav-sm" v-show="windowWidth < 768">
+      <div class="nav-sm" v-show="windowWidth < 800">
         <div class="menu__logo">
           <a href="#">
             <img src="static/img/pool-pros-logo.png" alt="Pool Pros" title="POOL PROS">
@@ -40,7 +40,7 @@
           </ul>
         </div>
       </div>
-      <div class="nav-lg" v-show="windowWidth >= 768">
+      <div class="nav-lg" v-show="windowWidth >= 800">
           <div class="menu__logo">
             <a href="#">
               <img src="static/img/pool-pros-logo.png" alt="Pool Pros" title="POOL PROS">
