@@ -337,7 +337,7 @@ export default {
     transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
 
     @include md {
-      top: 4rem;
+      top: 3.9rem;
     }
 
     @include lg {
