@@ -9,13 +9,13 @@
           <div class="social-media">
             <h1>Connect with us</h1>
             <div class="social-icons">
-              <a href="#">
+              <a href="#" class="facebook">
                 <img class="social-icons__facebook" src="/static/img/facebook-icon.png" alt="Facebook" title="Facebook">
               </a>
-              <a href="#">
+              <a href="#" class="twitter">
                 <img class="social-icons__twitter" src="/static/img/twitter-icon.png" alt="Twitter" title="Twitter">
               </a>
-              <a href="#">
+              <a href="#" class="youtube">
                 <img class="social-icons__youtube" src="/static/img/youtube-icon.png" alt="YouTube" title="YouTube">
               </a>
             </div>
@@ -91,7 +91,7 @@ export default {
     position: relative;
   }
   .social-media {
-    height: 3rem;
+    height: 4.2rem;
     width: 80%;
     margin: 0 auto;
     @include space-between;
@@ -107,12 +107,13 @@ export default {
     }
 
     img {
-      display: inline-block;
+      display: block;
     }
   }
 
   .social-icons {
-    width: 10rem;
+    width: 15rem;
+    height: 3.5rem;
     @include space-between;
   }
 

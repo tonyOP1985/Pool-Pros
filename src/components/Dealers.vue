@@ -280,7 +280,7 @@ export default {
       .contact {
         display: inline-block;
         position: absolute;
-        top: 1rem;
+        top: .8rem;
         left: 2.3rem;
         width: 15rem;
         font-family: $text-primary;

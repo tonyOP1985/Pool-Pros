@@ -8,7 +8,7 @@
           </a>
         </div>
         <div class="navbar__btn">
-          <a href="#" @click="getProDealers">
+          <a href="#dealers" @click="getProDealers">
             <!-- <img src="/static/img/location-icon.png" alt="location" title="Find a Pool Pro"> -->
             <i class="fas fa-map-marker-alt fa-lg"></i>
             Find a Pro
@@ -61,7 +61,7 @@
             </ul>
           </div>
           <div class="navbar__btn">
-            <a href="#" @click="getProDealers">
+            <a href="#dealers" @click="getProDealers">
               <!-- <img src="/static/img/location-icon.png" alt="location" title="Find a Pool Pro"> -->
               <i class="fas fa-map-marker-alt fa-lg"></i>
               Find a Pool Pro
@@ -253,8 +253,14 @@ export default {
       font-weight: 900;
       text-align: center;
       cursor: pointer;
+      transition: .5s;
 
       @include center-vertical;
+
+      &:hover {
+        border-color: lighten($blue, 20%);
+        color: lighten($blue, 20%);
+      }
 
       @include md {
       width: 13rem;
@@ -265,11 +271,16 @@ export default {
         height: 1.8rem;
         margin: 0 .4rem 0 1rem;
         color: $blue;
+        transition: .5s;
 
         @include md {
           margin: 0 .4rem 0 .5rem;
         }
       }
+    }
+
+    a:hover svg {
+      color: lighten($blue, 20%);
     }
   }
   .navbar__menu-icon {
@@ -283,6 +294,7 @@ export default {
       cursor: pointer;
     }
   }
+
   .nav__menu {
     @include md {
       width: 45rem;

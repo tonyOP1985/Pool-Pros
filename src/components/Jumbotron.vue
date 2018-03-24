@@ -129,7 +129,7 @@ export default {
       width: 75%;
       position: absolute;
       top: 70%;
-      left: 12%;
+      left: 15%;
       p {
         font-size: 1.3rem;
         font-weight: 400;

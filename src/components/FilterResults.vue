@@ -1,5 +1,5 @@
 <template>
-  <div class="filter-results-wrapper">
+  <div class="filter-results-wrapper" id="dealers">
     <div class="filter-results" :class="{ addHeight: show }">
       <div class="container">
         <div class="filter-results__filter" v-show="windowWidth < 750">
