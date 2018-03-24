@@ -101,18 +101,18 @@ export default {
     h1 {
       color: $off-white;
       font-family: $text-primary;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       text-transform: uppercase;
       padding-top: .2rem;
     }
 
     img {
-      display: block;
+      display: inline-block;
     }
   }
 
   .social-icons {
-    width: 15rem;
+    width: 12rem;
     height: 3.5rem;
     @include space-between;
   }
