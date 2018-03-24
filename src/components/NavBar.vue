@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar">
+  <div class="navbar" id="navbar">
     <div class="container">
       <div class="nav-sm" v-show="windowWidth < 768">
         <div class="menu__logo">
@@ -48,7 +48,7 @@
           <div class="nav__menu">
             <ul class="nav__menu-items">
               <li class="nav__menu-item" v-for="(menuLink, index) in menuLinks" :key="index">
-                <a href="#" target="_self" :title="menuLink.menuTitle">
+                <a href="#navbar" target="_self" :title="menuLink.menuTitle">
                   {{ menuLink.menuTitle }}
                 </a>
                 <ul class="nav__submenu">
