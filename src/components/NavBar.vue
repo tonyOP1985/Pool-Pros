@@ -361,25 +361,30 @@ export default {
     }
   }
 // .nav__menu-item:focus, .nav__menu-item:active
-  .nav__menu-item:hover .nav__submenu {
-    display: block;
-    opacity: 1;
-    z-index: 1;
-    transition-delay: all 0s, 0s, 0.3s;
+  .nav__menu-item {
+    a:hover .nav__submenu {
+      display: block;
+      opacity: 1;
+      z-index: 1;
+      transition-delay: all 0s, 0s, 0.3s;
+    }
   }
 
-  .nav__menu-item:focus .nav__submenu {
-    display: block;
-    opacity: 1;
-    z-index: 1;
-    transition-delay: all 0s, 0s, 0.3s;
+  .nav__menu-item {
+    a:focus .nav__submenu {
+      display: block;
+      opacity: 1;
+      z-index: 1;
+      transition-delay: all 0s, 0s, 0.3s;
+    }
   }
-
-  .nav__menu-item:active .nav__submenu {
-    display: block;
-    opacity: 1;
-    z-index: 1;
-    transition-delay: all 0s, 0s, 0.3s;
+  .nav__menu-item {
+    a:active .nav__submenu {
+      display: block;
+      opacity: 1;
+      z-index: 1;
+      transition-delay: all 0s, 0s, 0.3s;
+    }
   }
 
   // mobile side nav
