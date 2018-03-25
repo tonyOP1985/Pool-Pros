@@ -80,7 +80,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    overflow: hidden;
+    overflow-x: hidden;
     position: relative;
   }
 
