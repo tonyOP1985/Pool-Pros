@@ -1,7 +1,7 @@
 <template>
   <div class="navbar" id="navbar">
     <div class="container">
-      <div class="nav-sm" v-show="windowWidth < 800">
+      <div class="nav-sm" v-show="windowWidth < 768">
         <div class="menu__logo">
           <a href="#">
             <img src="static/img/pool-pros-logo.png" alt="Pool Pros" title="POOL PROS">
@@ -39,7 +39,7 @@
           </ul>
         </div>
       </div>
-      <div class="nav-lg" v-show="windowWidth >= 800">
+      <div class="nav-lg" v-show="windowWidth >= 768">
           <div class="menu__logo">
             <a href="#">
               <img src="static/img/pool-pros-logo.png" alt="Pool Pros" title="POOL PROS">
@@ -373,19 +373,19 @@ export default {
   transition-delay: all 0s, 0s, 0.3s;
 }
 
-.nav__menu-title:focus .nav__submenu {
-  display: block;
-  opacity: 1;
-  z-index: 1;
-  transition-delay: all 0s, 0s, 0.3s;
-}
+// .nav__menu-title:focus .nav__submenu {
+//   display: block;
+//   opacity: 1;
+//   z-index: 1;
+//   transition-delay: all 0s, 0s, 0.3s;
+// }
 
-.nav__menu-title:active .nav__submenu {
-  display: block;
-  opacity: 1;
-  z-index: 1;
-  transition-delay: all 0s, 0s, 0.3s;
-}
+// .nav__menu-title:active .nav__submenu {
+//   display: block;
+//   opacity: 1;
+//   z-index: 1;
+//   transition-delay: all 0s, 0s, 0.3s;
+// }
 
 .nav__submenu__show {
   display: block;
