@@ -1,7 +1,7 @@
 <template>
   <div class="navbar" id="navbar">
     <div class="container">
-      <div class="nav-sm" v-show="windowWidth < 768">
+      <div class="nav-sm" v-show="windowWidth < 800">
         <div class="menu__logo">
           <a href="#">
             <img src="static/img/pool-pros-logo.png" alt="Pool Pros" title="POOL PROS">
@@ -39,7 +39,7 @@
           </ul>
         </div>
       </div>
-      <div class="nav-lg" v-show="windowWidth >= 768">
+      <div class="nav-lg" v-show="windowWidth >= 800">
           <div class="menu__logo">
             <a href="#">
               <img src="static/img/pool-pros-logo.png" alt="Pool Pros" title="POOL PROS">
@@ -47,11 +47,11 @@
           </div>
           <div class="nav__menu">
             <ul class="nav__menu-items">
-              <li class="nav__menu-item" aria-haspopup="true" v-for="(menuLink, index) in menuLinks" :key="index">
+              <li class="nav__menu-item" v-for="(menuLink, index) in menuLinks" :key="index">
                 <a class="nav__menu-title" href="#" :title="menuLink.menuTitle">
                   {{ menuLink.menuTitle }}
                 </a>
-                <ul class="nav__submenu">
+                <ul class="nav__submenu" :class="{ nav__submenu__show: showDropDown[menuLink.id].subDrop }">
                   <li v-for="(item, index) in menuLink.menuItems" :key="index">
                     <a href="#">{{ item }}</a>
                   </li>
@@ -82,6 +82,7 @@ export default {
       openSubMenu: false,
       dealers: dealers.dealers,
       show: [{subOpen: false}, {subOpen: false}, {subOpen: false}, {subOpen: false}],
+      showDropDown: [{subDrop: false}, {subDrop: false}, {subDrop: false}, {subDrop: false}],
       menuLinks: [
         {
           menuTitle: 'Pools & Spas',
@@ -139,6 +140,9 @@ export default {
     openNav (n) {
       // this.openSubMenu = !this.openSubMenu
       this.show[n].subOpen = !this.show[n].subOpen
+    },
+    showDropMenu (n) {
+      this.showDropDown[n].subDrop = !this.showDropDown[n].subDrop
     },
     getProDealers (e) {
       this.$emit('getProDealers', this.dealers)
@@ -362,21 +366,28 @@ export default {
   }
 // .nav__menu-item:focus, .nav__menu-item:active
 
-.nav__menu-item:hover .nav__submenu {
+.nav__menu-title:hover .nav__submenu {
   display: block;
   opacity: 1;
   z-index: 1;
   transition-delay: all 0s, 0s, 0.3s;
 }
 
-.nav__menu-item:focus .nav__submenu {
+.nav__menu-title:focus .nav__submenu {
   display: block;
   opacity: 1;
   z-index: 1;
   transition-delay: all 0s, 0s, 0.3s;
 }
 
-.nav__menu-item:active .nav__submenu {
+.nav__menu-title:active .nav__submenu {
+  display: block;
+  opacity: 1;
+  z-index: 1;
+  transition-delay: all 0s, 0s, 0.3s;
+}
+
+.nav__submenu__show {
   display: block;
   opacity: 1;
   z-index: 1;
