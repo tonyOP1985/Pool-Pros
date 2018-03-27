@@ -48,14 +48,14 @@
           <div class="nav__menu">
             <ul class="nav__menu-items">
               <li class="nav__menu-item" v-for="(menuLink, index) in menuLinks" :key="index">
-                <a class="nav__menu-title" href="#" :title="menuLink.menuTitle">
-                  {{ menuLink.menuTitle }}
+                <a class="nav__menu-title" href="#">
+                  <span>{{ menuLink.menuTitle }}</span>
                 </a>
-                <ul class="nav__submenu" :class="{ nav__submenu__show: showDropDown[menuLink.id].subDrop }">
+                <!-- <ul class="nav__submenu">
                   <li v-for="(item, index) in menuLink.menuItems" :key="index">
                     <a href="#">{{ item }}</a>
                   </li>
-                </ul>
+                </ul> -->
               </li>
             </ul>
           </div>
@@ -110,8 +110,6 @@ export default {
           menuTitle: 'Resources',
           id: 2,
           menuItems: [
-            'Cleaning',
-            'Filters',
             'Frodo and Sam\'s Clean Pool Club',
             'Shire Pools'
           ]
@@ -293,7 +291,7 @@ export default {
 
   .nav__menu {
     @include md {
-      width: 45rem;
+      width: 40rem;
       position: relative;
       margin: 0 auto;
       @include center-vertical
@@ -301,33 +299,47 @@ export default {
   }
 
   .nav__menu-item {
+    margin-top: 1rem;
     list-style: none;
     @include md {
-      width: auto;
-      height: auto;
-      margin: 1rem 0 0 0;
+      width: 10rem;
+      height: 4rem;
+      margin-top: 3rem;
       list-style: none;
       @include horizontal-list;
       cursor: pointer;
     }
 
-    a {
+    .nav__menu-title {
       @include md {
-        width: auto;
+        display: block;
+        width: 10rem;
+        height: 4rem;
         font-size: 1.4rem;
         font-weight: 700;
         color: $blue;
         text-decoration: none;
-        background: url(/static/img/down-arrow.png) no-repeat right;
-        background-size: .8rem;
-        padding: 1.8rem;
+        text-align: center;
         cursor: pointer;
+
+        span {
+          width: max-content;
+          margin: 0 auto;
+          position: relative;
+          display: block;
+          &::before {
+            @include animateUnderline;
+          }
+        }
+        &:hover span::before {
+          @include hoverUnderline;
+        }
       }
     }
   }
 
  .nav__submenu {
-    padding-top: 1.1rem;
+    padding-top: 1.8rem;
     display: block;
     opacity: 0;
     position: absolute;
@@ -364,31 +376,8 @@ export default {
       }
     }
   }
-// .nav__menu-item:focus, .nav__menu-item:active
 
-.nav__menu-title:hover .nav__submenu {
-  display: block;
-  opacity: 1;
-  z-index: 1;
-  transition-delay: all 0s, 0s, 0.3s;
-}
-
-// .nav__menu-title:focus .nav__submenu {
-//   display: block;
-//   opacity: 1;
-//   z-index: 1;
-//   transition-delay: all 0s, 0s, 0.3s;
-// }
-
-// .nav__menu-title:active .nav__submenu {
-//   display: block;
-//   opacity: 1;
-//   z-index: 1;
-//   transition-delay: all 0s, 0s, 0.3s;
-// }
-
-.nav__submenu__show {
-  display: block;
+.nav__menu-item:hover .nav__submenu {
   opacity: 1;
   z-index: 1;
   transition-delay: all 0s, 0s, 0.3s;
