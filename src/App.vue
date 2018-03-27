@@ -24,7 +24,6 @@ import Jumbotron from './components/Jumbotron.vue'
 import Directions from './components/Directions.vue'
 import SiteFooter from './components/SiteFooter.vue'
 import FilterResults from './components/FilterResults.vue'
-import FilterResultsLarge from './components/FilterResultsLarge.vue'
 
 export default {
   name: 'App',
@@ -34,9 +33,7 @@ export default {
     Directions,
     TopHeader,
     SiteFooter,
-    FilterResults,
-    FilterResultsLarge
-    // Dealers
+    FilterResults
   },
   data () {
     return {

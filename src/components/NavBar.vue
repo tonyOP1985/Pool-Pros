@@ -26,15 +26,6 @@
               <a class="nav__menu-item__link" href="#" @click="openNav(index)">
                 {{ menuLink.menuTitle }}
               </a>
-              <ul class="nav__submenu-sm" :class="{ openSubMenu: show[index].subOpen }">
-                <li class="nav__close" @click="openNav(index)">
-                  <span class="nav__close__close">&#10006;</span>
-                  <a href="#">{{ menuLink.menuTitle }}</a>
-                </li>
-                <li v-for="item in menuLink.menuItems" :key="item">
-                  <a class="nav__subitem" href="#">{{ item }}</a>
-                </li>
-              </ul>
             </li>
           </ul>
         </div>
@@ -51,11 +42,6 @@
                 <a class="nav__menu-title" href="#">
                   <span>{{ menuLink.menuTitle }}</span>
                 </a>
-                <!-- <ul class="nav__submenu">
-                  <li v-for="(item, index) in menuLink.menuItems" :key="index">
-                    <a href="#">{{ item }}</a>
-                  </li>
-                </ul> -->
               </li>
             </ul>
           </div>
@@ -81,52 +67,11 @@ export default {
       isOpen: false,
       openSubMenu: false,
       dealers: dealers.dealers,
-      show: [{subOpen: false}, {subOpen: false}, {subOpen: false}, {subOpen: false}],
-      showDropDown: [{subDrop: false}, {subDrop: false}, {subDrop: false}, {subDrop: false}],
       menuLinks: [
-        {
-          menuTitle: 'Pools & Spas',
-          id: 0,
-          menuItems: [
-            'Above Ground Pools',
-            'In Ground Pools',
-            'Spas'
-          ]
-        },
-        {
-          menuTitle: 'Supplies',
-          id: 1,
-          menuItems: [
-            'Vaccum Heads & Hoses',
-            'Chlorine Tabs & Powder',
-            'Solar Blankets',
-            'Winter/Saftey Covers',
-            'Winter Supplies',
-            'Pumps & Filters',
-            'Heaters & more'
-          ]
-        },
-        {
-          menuTitle: 'Resources',
-          id: 2,
-          menuItems: [
-            'Frodo and Sam\'s Clean Pool Club',
-            'Shire Pools'
-          ]
-        },
-        {
-          menuTitle: 'Services',
-          id: 3,
-          menuItems: [
-            'Residential Maintenace',
-            'Openings & Closings',
-            'Pool and Spa Renovations',
-            'Vinyl Liner Replacement & Repair',
-            'Safety Covers',
-            'Automatic Pool & Spa Covers',
-            'Landscaping'
-          ]
-        }
+        { menuTitle: 'Pools & Spas' },
+        { menuTitle: 'Supplies' },
+        { menuTitle: 'Resources' },
+        { menuTitle: 'Services' }
       ]
     }
   },
@@ -134,13 +79,6 @@ export default {
     openSideNav () {
       this.isOpen = !this.isOpen
       this.$emit('openSideNav', this.isOpen)
-    },
-    openNav (n) {
-      // this.openSubMenu = !this.openSubMenu
-      this.show[n].subOpen = !this.show[n].subOpen
-    },
-    showDropMenu (n) {
-      this.showDropDown[n].subDrop = !this.showDropDown[n].subDrop
     },
     getProDealers (e) {
       this.$emit('getProDealers', this.dealers)
@@ -338,51 +276,6 @@ export default {
     }
   }
 
- .nav__submenu {
-    padding-top: 1.8rem;
-    display: block;
-    opacity: 0;
-    position: absolute;
-    top: 3rem;
-    min-width: 22rem;
-    z-index: -1;
-    transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
-    cursor: pointer;
-
-    @include md {
-      top: 3.9rem;
-    }
-
-    @include lg {
-      padding-top: 2.3rem;
-      top: 3rem;
-    }
-
-    li {
-      list-style: none;
-
-      a {
-        color: $dark-blue;
-        font-size: 1.2rem;
-        background: none;
-        background-color: #fff;
-        padding: 1.2rem 1.6rem;
-        display: block;
-        cursor: pointer;
-
-        &:hover {
-          background-color: #eee;
-        }
-      }
-    }
-  }
-
-.nav__menu-item:hover .nav__submenu {
-  opacity: 1;
-  z-index: 1;
-  transition-delay: all 0s, 0s, 0.3s;
-}
-
   // mobile side nav
   .navbar-mobile-wrapper {
     height:100%;
@@ -419,8 +312,6 @@ export default {
       font-size: 1.4rem;
       font-weight: 700;
       color: $blue;
-      background: url(/static/img/next-arrow.png) no-repeat right;
-      background-size: .8rem;
       width: 80%;
       height: 4rem;
       display: block;
@@ -428,59 +319,6 @@ export default {
       text-align: center;
 
       @include center-vertical;
-    }
-  }
-
-  .nav__submenu-sm {
-    height:100%;
-    width:0;
-    position:fixed;
-    z-index:2;
-    top:0;
-    right: 0;
-    background-color: $color-white;
-    overflow-x:hidden;
-    padding-top: 2rem;
-    transition:0.5s;
-
-    .nav__close {
-      height: 3.3rem;
-      margin-bottom: .5rem;
-    }
-
-    li {
-      width: 25rem;
-      height: 4rem;
-      margin: 0 auto;
-      list-style: none;
-      display: block;
-      @include center-vertical;
-
-      &:hover {
-        background-color: $off-white;
-      }
-    }
-  }
-
-  .openSubMenu {
-    width: 25rem;
-  }
-
-  .nav__subitem {
-    text-decoration: none;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: $blue;
-    width: 25rem;
-    height: 4rem;
-    display: block;
-    margin: 0 auto;
-    padding-left: 1rem;
-    text-align: center;
-    @include center-vertical;
-
-    &:hover {
-      background-color: $off-white;
     }
   }
 
