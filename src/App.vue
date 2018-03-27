@@ -1,8 +1,8 @@
 <template>
-  <div id="app" class="app" :class="{ hideScrollBar: hideScroll }">
+  <div id="app" class="app" :class="{ hideScrollBar: hideScroll }" v-cloak>
     <header>
       <TopHeader></TopHeader>
-      <NavBar1 :windowWidth="windowWidth" @getProDealers="sendDealers" @openSideNav="hideScrollBar"></NavBar1>
+      <NavBar :windowWidth="windowWidth" @getProDealers="sendDealers" @openSideNav="hideScrollBar"></NavBar>
     </header>
     <div class="content">
       <Jumbotron></Jumbotron>
@@ -19,7 +19,7 @@
 
 <script>
 import TopHeader from './components/TopHeader.vue'
-import NavBar1 from './components/NavBar1.vue'
+import NavBar from './components/NavBar.vue'
 import Jumbotron from './components/Jumbotron.vue'
 import Directions from './components/Directions.vue'
 import SiteFooter from './components/SiteFooter.vue'
@@ -28,7 +28,7 @@ import FilterResults from './components/FilterResults.vue'
 export default {
   name: 'App',
   components: {
-    NavBar1,
+    NavBar,
     Jumbotron,
     Directions,
     TopHeader,
@@ -80,6 +80,10 @@ export default {
     position: relative;
   }
 
+  [v-cloak] {
+    display: none;
+  }
+
   .content {
     flex-grow: 1;
   }
@@ -87,10 +91,6 @@ export default {
   header, .content, footer {
     flex-shrink: 0;
   }
-
-  // .filter-large {
-  //   height: 12rem;
-  // }
 
   .hideScrollBar {
     position: fixed;
