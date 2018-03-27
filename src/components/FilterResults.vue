@@ -67,9 +67,14 @@ export default {
 <style lang="scss" scoped>
   @import "../assets/app.scss";
 
+  .filter-results-wrapper {
+    max-width: 100%;
+  }
+
   .filter-results {
-    width: 100%;
+    max-width: 100%;
     height: 8rem;
+    margin: 0;
     font-family: $text-primary;
     z-index: 0;
     background-color: $off-white;

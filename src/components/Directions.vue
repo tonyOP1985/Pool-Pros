@@ -60,7 +60,7 @@ export default {
   }
 
   .direction__steps {
-    width: 100%;
+    max-width: 100%;
 
     @include md {
       @include space-around;

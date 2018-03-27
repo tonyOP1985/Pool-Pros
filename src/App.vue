@@ -2,7 +2,7 @@
   <div id="app" class="app" :class="{ hideScrollBar: hideScroll }">
     <header>
       <TopHeader></TopHeader>
-      <NavBar :windowWidth="windowWidth" @getProDealers="sendDealers" @openSideNav="hideScrollBar"></NavBar>
+      <NavBar1 :windowWidth="windowWidth" @getProDealers="sendDealers" @openSideNav="hideScrollBar"></NavBar1>
     </header>
     <div class="content">
       <Jumbotron></Jumbotron>
@@ -19,7 +19,7 @@
 
 <script>
 import TopHeader from './components/TopHeader.vue'
-import NavBar from './components/NavBar.vue'
+import NavBar1 from './components/NavBar1.vue'
 import Jumbotron from './components/Jumbotron.vue'
 import Directions from './components/Directions.vue'
 import SiteFooter from './components/SiteFooter.vue'
@@ -28,7 +28,7 @@ import FilterResults from './components/FilterResults.vue'
 export default {
   name: 'App',
   components: {
-    NavBar,
+    NavBar1,
     Jumbotron,
     Directions,
     TopHeader,
@@ -88,9 +88,9 @@ export default {
     flex-shrink: 0;
   }
 
-  .filter-large {
-    height: 12rem;
-  }
+  // .filter-large {
+  //   height: 12rem;
+  // }
 
   .hideScrollBar {
     position: fixed;

@@ -105,6 +105,7 @@ export default {
 
   .dealers-wrapper {
     @include md {
+      max-width: 100%;
       margin-top: 5rem;
     }
     @include lg {
