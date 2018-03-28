@@ -1,6 +1,8 @@
 # pool-pros
 
-> A Vue.js project
+Vue.js and SCSS project based on picture of a fictious website.  
+
+Currently the nav bar displayed on view ports 768px or larger doesn't work on touch screens.
 
 ## Build Setup
 
