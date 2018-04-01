@@ -50,15 +50,23 @@ export default {
   },
   computed: {
     filterDealers (event) {
+      // no certifications selelcted
       if (!this.checkedOptions.length) return this.dealers
 
+      // returns array if every checked option is included in certifications array
       let proArr = this.dealers.filter((dealer) => {
-        for (let i = 0; i < this.checkedOptions.length; i++) {
-          if (!dealer.data.certifications.includes(this.checkedOptions[i])) return false
-        }
-        return true
+        return this.checkedOptions.every(item => dealer.data.certifications.includes(item))
       })
+
       return proArr
+
+      // let proArr = this.dealers.filter((dealer) => {
+      //   for (let i = 0; i < this.checkedOptions.length; i++) {
+      //     if (!dealer.data.certifications.includes(this.checkedOptions[i])) return false
+      //   }
+      //   return true
+      // })
+      // return proArr
     }
   }
 }

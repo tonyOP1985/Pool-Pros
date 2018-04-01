@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import dealers from './dealer.json'
+import dealers from '../assets/dealer.json'
 
 export default {
   name: 'navBar',

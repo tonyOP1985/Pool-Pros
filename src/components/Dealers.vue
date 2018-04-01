@@ -75,17 +75,17 @@ export default {
     }
   },
   methods: {
+    // replaces dashes in phone numbers with periods
     removeDash (str) {
       let newStr = str.replace(/-/g, '.')
       return newStr
     },
+    // gets appropriate image for each certification
     addCertImage (cert) {
+      //  remove "pro" from certification name before selecting correct image
       let newStr = (cert.replace(/pro/i, '')).trim()
-      for (let i = 0; i < this.certImage.length; i++) {
-        if (this.certImage[i].name === newStr) {
-          return `/static/img/${this.certImage[i].image}`
-        }
-      }
+      let imageUrl = this.certImage.find(i => newStr === i.name).image
+      return `/static/img/${imageUrl}`
     },
     proClosed (hours) {
       if (hours === '') {
