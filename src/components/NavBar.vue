@@ -53,7 +53,7 @@
                   {{ menuLink.menuTitle }}
                   <img src="static/img/down-arrow.png" alt="">
                 </a>
-                <ul class="nav__submenu">
+                <ul class="nav__submenu" onclick="">
                   <li v-for="(item, index) in menuLink.menuItems" :key="index">
                     <a href="#">{{ item }}</a>
                   </li>
