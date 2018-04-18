@@ -49,14 +49,11 @@
           <div class="nav__menu">
             <ul class="nav__menu-items">
               <li class="nav__menu-item" v-for="(menuLink, index) in menuLinks" :key="index">
-                <a class="nav__menu-title"
-                  href="#"
-                  >
-                  <!-- @click="showDropMenu(index)" -->
+                <a class="nav__menu-title" href="#">
                   {{ menuLink.menuTitle }}
                   <img src="static/img/down-arrow.png" alt="">
                 </a>
-                <ul class="nav__submenu" :class="{ hover_state: showDropDown[index].subDrop }">
+                <ul class="nav__submenu">
                   <li v-for="(item, index) in menuLink.menuItems" :key="index">
                     <a href="#">{{ item }}</a>
                   </li>
@@ -401,12 +398,6 @@ export default {
 }
 
 .nav__menu-item:focus .nav__submenu {
-  opacity: 1;
-  z-index: 1;
-  transition-delay: all 0s, 0s, 0.3s;
-}
-
-.hover_state {
   opacity: 1;
   z-index: 1;
   transition-delay: all 0s, 0s, 0.3s;
