@@ -51,8 +51,8 @@
               <li class="nav__menu-item" v-for="(menuLink, index) in menuLinks" :key="index">
                 <a class="nav__menu-title"
                   href="#"
-                  @mouseover="showDropMenu(index)"
-                  @mouseout="showDropMenu(index)">
+                  >
+                  <!-- @click="showDropMenu(index)" -->
                   {{ menuLink.menuTitle }}
                   <img src="static/img/down-arrow.png" alt="">
                 </a>
@@ -394,11 +394,17 @@ export default {
     }
   }
 
-// .nav__menu-title:hover .nav__submenu {
-//   opacity: 1;
-//   z-index: 1;
-//   transition-delay: all 0s, 0s, 0.3s;
-// }
+.nav__menu-item:hover .nav__submenu {
+  opacity: 1;
+  z-index: 1;
+  transition-delay: all 0s, 0s, 0.3s;
+}
+
+.nav__menu-item:focus .nav__submenu {
+  opacity: 1;
+  z-index: 1;
+  transition-delay: all 0s, 0s, 0.3s;
+}
 
 .hover_state {
   opacity: 1;
