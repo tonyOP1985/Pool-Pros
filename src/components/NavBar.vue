@@ -49,11 +49,14 @@
           <div class="nav__menu">
             <ul class="nav__menu-items">
               <li class="nav__menu-item" v-for="(menuLink, index) in menuLinks" :key="index">
-                <a class="nav__menu-title" href="#">
+                <a class="nav__menu-title"
+                  href="#"
+                  @mouseover="showDropMenu(index)"
+                  @mouseout="showDropMenu(index)">
                   {{ menuLink.menuTitle }}
                   <img src="static/img/down-arrow.png" alt="">
                 </a>
-                <ul class="nav__submenu" onclick="">
+                <ul class="nav__submenu" :class="{ hover_state: showDropDown[index].subDrop }">
                   <li v-for="(item, index) in menuLink.menuItems" :key="index">
                     <a href="#">{{ item }}</a>
                   </li>
@@ -143,6 +146,7 @@ export default {
     },
     showDropMenu (n) {
       this.showDropDown[n].subDrop = !this.showDropDown[n].subDrop
+      console.log(this.showDropDown[n].subDrop)
     },
     getProDealers (e) {
       this.$emit('getProDealers', this.dealers)
@@ -390,7 +394,13 @@ export default {
     }
   }
 
-.nav__menu-item:hover .nav__submenu {
+// .nav__menu-title:hover .nav__submenu {
+//   opacity: 1;
+//   z-index: 1;
+//   transition-delay: all 0s, 0s, 0.3s;
+// }
+
+.hover_state {
   opacity: 1;
   z-index: 1;
   transition-delay: all 0s, 0s, 0.3s;
