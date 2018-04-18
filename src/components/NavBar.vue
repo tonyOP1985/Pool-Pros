@@ -84,7 +84,6 @@ export default {
       openSubMenu: false,
       dealers: dealers.dealers,
       show: [{subOpen: false}, {subOpen: false}, {subOpen: false}, {subOpen: false}],
-      showDropDown: [{subDrop: false}, {subDrop: false}, {subDrop: false}, {subDrop: false}],
       menuLinks: [
         {
           menuTitle: 'Pools & Spas',
@@ -140,10 +139,6 @@ export default {
     openNav (n) {
       // this.openSubMenu = !this.openSubMenu
       this.show[n].subOpen = !this.show[n].subOpen
-    },
-    showDropMenu (n) {
-      this.showDropDown[n].subDrop = !this.showDropDown[n].subDrop
-      console.log(this.showDropDown[n].subDrop)
     },
     getProDealers (e) {
       this.$emit('getProDealers', this.dealers)
