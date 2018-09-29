@@ -77,27 +77,27 @@ export default {
   methods: {
     // replaces dashes in phone numbers with periods
     removeDash (str) {
-      let newStr = str.replace(/-/g, '.')
-      return newStr
+      let newStr = str.replace(/-/g, '.');
+      return newStr;
     },
     // gets appropriate image for each certification
     addCertImage (cert) {
       //  remove "pro" from certification name before selecting correct image
-      let newStr = (cert.replace(/pro/i, '')).trim()
-      let imageUrl = this.certImage.find(i => newStr === i.name).image
-      return `/static/img/${imageUrl}`
+      let newStr = (cert.replace(/pro/i, '')).trim();
+      let imageUrl = this.certImage.find(i => newStr === i.name).image;
+      return `/static/img/${imageUrl}`;
     },
     proClosed (hours) {
       if (hours === '') {
-        return '- Closed'
+        return '- Closed';
       } else if (hours === 'On Call') {
-        return '- On Call'
+        return '- On Call';
       } else {
-        return hours
+        return hours;
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

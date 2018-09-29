@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import dealers from '../assets/dealer.json'
+import dealers from '../assets/dealer.json';
 
 export default {
   name: 'navBar',
@@ -133,19 +133,19 @@ export default {
   },
   methods: {
     openSideNav () {
-      this.isOpen = !this.isOpen
-      this.$emit('openSideNav', this.isOpen)
+      this.isOpen = !this.isOpen;
+      this.$emit('openSideNav', this.isOpen);
     },
     openNav (n) {
       // this.openSubMenu = !this.openSubMenu
-      this.show[n].subOpen = !this.show[n].subOpen
+      this.show[n].subOpen = !this.show[n].subOpen;
     },
     getProDealers (e) {
-      this.$emit('getProDealers', this.dealers)
-      e.preventDefault()
+      this.$emit('getProDealers', this.dealers);
+      e.preventDefault();
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
