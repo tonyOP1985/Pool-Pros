@@ -18,12 +18,12 @@
 </template>
 
 <script>
-import TopHeader from './components/TopHeader.vue'
-import NavBar from './components/NavBar.vue'
-import Jumbotron from './components/Jumbotron.vue'
-import Directions from './components/Directions.vue'
-import SiteFooter from './components/SiteFooter.vue'
-import FilterResults from './components/FilterResults.vue'
+import TopHeader from './components/TopHeader.vue';
+import NavBar from './components/NavBar.vue';
+import Jumbotron from './components/Jumbotron.vue';
+import Directions from './components/Directions.vue';
+import SiteFooter from './components/SiteFooter.vue';
+import FilterResults from './components/FilterResults.vue';
 
 export default {
   name: 'App',
@@ -44,29 +44,29 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      window.addEventListener('resize', this.getWindowWidth)
+      window.addEventListener('resize', this.getWindowWidth);
 
-      this.getWindowWidth()
+      this.getWindowWidth();
     })
   },
   methods: {
     getWindowWidth () {
-      this.windowWidth = document.documentElement.clientWidth
+      this.windowWidth = document.documentElement.clientWidth;
     },
     openSideNav () {
-      this.isOpen = !this.isOpen
+      this.isOpen = !this.isOpen;
     },
     sendDealers (pros) {
-      this.dealers = pros
+      this.dealers = pros;
     },
     hideScrollBar (bool) {
-      this.hideScroll = bool
+      this.hideScroll = bool;
     }
   },
   beforeDestroy () {
-    window.addEventListener('resize', this.getWindowWidth)
+    window.addEventListener('resize', this.getWindowWidth);
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
