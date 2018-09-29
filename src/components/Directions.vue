@@ -38,7 +38,7 @@
 <script>
 export default {
   name: 'directions'
-}
+};
 </script>
 
 <style lang="scss" scoped>

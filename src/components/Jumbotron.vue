@@ -20,7 +20,7 @@
 <script>
 export default {
   name: 'jumbotron'
-}
+};
 </script>
 
 <style lang="scss" scoped>
